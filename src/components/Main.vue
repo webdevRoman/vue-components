@@ -10,8 +10,8 @@
         .main__text
           .title.main__title Пакет компонентов Vue
           .text Здесь вы найдёте различные элементы, используемые в веб-приложениях. Все компоненты являются кастомизируемыми: как стили, так и некоторые конфигурации могут быть настроены при подключении компонента.
-      .main__vue
-        img(src="../assets/img/vue.svg", alt="Vue")
+    .main__vue
+      img(src="../assets/img/vue.svg", alt="Vue")
 
 </template>
 
@@ -63,7 +63,10 @@ export default {
     margin-bottom: 30px
   &__vue
     position: absolute
-    top: 10px
+    top: 320px
     left: 970px
     width: 450px
+    transition: 1s
+    &:hover
+      transform scale(1.25)
 </style>
