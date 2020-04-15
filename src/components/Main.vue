@@ -8,11 +8,10 @@
       .main__delement
       .container
         .main__text
-          .title.main__title Пакет компонентов Vue
+          h1.title.main__title Пакет компонентов Vue
           .text Здесь вы найдёте различные элементы, используемые в веб-приложениях. Все компоненты являются кастомизируемыми: как стили, так и некоторые конфигурации могут быть настроены при подключении компонента.
     .main__vue
       img(src="../assets/img/vue.svg", alt="Vue")
-
 </template>
 
 <script>

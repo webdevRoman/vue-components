@@ -1,9 +1,9 @@
 <template lang="pug">
 .container.cards-container
-  button.card(v-for="(card, i) in cards")
-    .card-item(:class="imgNumbers[i]")
+  router-link.card(:to="{ path: `/component/${card.engName}`, query: { name: card.name, ind: imgNumbers[i] }}", v-for="(card, i) in cards")
+    .card-item(:class="`card-item-${imgNumbers[i]}`")
       .card__text
-        .subtitle.card__title {{ card.name }}
+        .subtitle.card__title {{ card.shortName }}
         .card__subtitle {{ card.engName }}
 </template>
 
@@ -13,21 +13,21 @@ export default {
   data() {
     return {
       cards: [{
-        // id: 1,
-        name: 'Календарь',
-        engName: 'Calendar',
+        name: 'календарь',
+        shortName: 'календарь',
+        engName: 'calendar',
       }, {
-        // id: 2,
-        name: 'Слайдер',
-        engName: 'Slider',
+        name: 'слайдер',
+        shortName: 'слайдер',
+        engName: 'slider',
       }, {
-        // id: 3,
-        name: 'Модальное окно',
-        engName: 'Modal',
+        name: 'модальное окно',
+        shortName: 'модальное окно',
+        engName: 'modal',
       }, {
-        // id: 4,
-        name: 'Гориз. аккордеон',
-        engName: 'Horizontal accordion',
+        name: 'горизонтальный аккордеон',
+        shortName: 'гориз. аккордеон',
+        engName: 'horizontal accordion',
       }]
     }
   },
@@ -35,7 +35,8 @@ export default {
     imgNumbers() {
       const imgNumbers = []
       for (let i = 0; i < this.cards.length; i++)
-        imgNumbers.push(`card-item-${Math.ceil(Math.random() * 5)}`)
+        imgNumbers.push(Math.ceil(Math.random() * 5))
+        // imgNumbers.push(`card-item-${Math.ceil(Math.random() * 5)}`)
       return imgNumbers
     }
   },
@@ -64,8 +65,6 @@ function stopRotate() {
   const cardItem = this.querySelector('.card-item')
   cardItem.style.transition = '0.2s'
   setTimeout(() => { cardItem.style.transition = 'none' }, 210)
-
-  // const cardItem = this.querySelector('.card-item')
   cardItem.style.transform = 'rotate(0)'
 }
 </script>
@@ -130,15 +129,15 @@ function stopRotate() {
   &:nth-child(3n)
     margin-right: 0
   // &-1
-  //   background-image: url('../assets/img/bg1.jpg')
+  // background-image: url('../assets/img/bg1.jpg')
   // &-2
-  //   background-image: url('../assets/img/bg2.jpg')
+  // background-image: url('../assets/img/bg2.jpg')
   // &-3
-  //   background-image: url('../assets/img/bg3.jpg')
+  // background-image: url('../assets/img/bg3.jpg')
   // &-4
-  //   background-image: url('../assets/img/bg4.jpg')
+  // background-image: url('../assets/img/bg4.jpg')
   // &-5
-  //   background-image: url('../assets/img/bg5.jpg')
+  // background-image: url('../assets/img/bg5.jpg')
   &__text
     position: absolute
     bottom: 20px
