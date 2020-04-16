@@ -78,18 +78,10 @@ function stopRotate() {
     margin-bottom: 110px
 
 .card
-  // position: relative
-  // width: 264px
-  // height: 264px
-  // background-position: center
-  // background-repeat: no-repeat
-  // background-size: cover
-  // box-shadow: 0 0 20px rgba(0, 0, 0, .3)
   margin-right: 128px
   margin-bottom: 90px
   perspective: 1000px
   transform-style: preserve-3d
-  // transition: .2s
   &-item
     position: relative
     width: 264px
@@ -98,7 +90,6 @@ function stopRotate() {
     background-repeat: no-repeat
     background-size: cover
     box-shadow: 0 0 20px rgba(0, 0, 0, .3)
-    // transition: .2s
     &:before, &:after
       content: ''
       display: block
@@ -128,16 +119,6 @@ function stopRotate() {
       background-image: url('../assets/img/bg5.jpg')
   &:nth-child(3n)
     margin-right: 0
-  // &-1
-  // background-image: url('../assets/img/bg1.jpg')
-  // &-2
-  // background-image: url('../assets/img/bg2.jpg')
-  // &-3
-  // background-image: url('../assets/img/bg3.jpg')
-  // &-4
-  // background-image: url('../assets/img/bg4.jpg')
-  // &-5
-  // background-image: url('../assets/img/bg5.jpg')
   &__text
     position: absolute
     bottom: 20px

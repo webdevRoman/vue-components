@@ -4,16 +4,19 @@
       .header__text
         h2.header__title {{ $route.query.name }}
         .header__subtitle {{ $route.params.engName }}
-    .component-section Здесь будет компонент
+    .component-section
+      Calendar(v-if="$route.params.engName === 'calendar'")
     Footer
 </template>
 
 <script>
+import Calendar from '@/components/Calendar.vue'
 import Footer from '@/components/Footer.vue'
 
 export default {
   name: 'Component',
   components: {
+    Calendar,
     Footer
   },
   mounted() {
@@ -80,4 +83,10 @@ export default {
       width: 20px
       height: 200px
       background-color: $cBgDark
+.component
+  &-section
+    display flex
+    justify-content center
+    align-items center
+    padding 50px 0
 </style>
