@@ -14,17 +14,17 @@ import Calendar from '@/components/Calendar.vue'
 import Footer from '@/components/Footer.vue'
 
 export default {
-  name: 'Component',
+  name: 'MyComponent',
   components: {
     Calendar,
     Footer
-  },
-  mounted() {
-    const header = document.querySelector('.header')
-    const footer = document.querySelector('.footer')
-    const componentSection = document.querySelector('.component-section')
-    componentSection.style.minHeight = window.innerHeight - header.offsetHeight - footer.offsetHeight + 'px'
   }
+  // mounted() {
+  //   const header = document.querySelector('.header')
+  //   const footer = document.querySelector('.footer')
+  //   const componentSection = document.querySelector('.component-section')
+  //   componentSection.style.minHeight = window.innerHeight - header.offsetHeight - footer.offsetHeight + 'px'
+  // }
 }
 </script>
 
@@ -83,10 +83,16 @@ export default {
       width: 20px
       height: 200px
       background-color: $cBgDark
+
 .component
+  display: flex
+  justify-content: space-between
+  flex-direction: column
+  width: 100%
+  min-height: 100vh
   &-section
-    display flex
-    justify-content center
-    align-items center
-    padding 50px 0
+    display: flex
+    justify-content: center
+    align-items: center
+    padding: 100px 0
 </style>

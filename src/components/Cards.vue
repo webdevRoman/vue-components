@@ -1,6 +1,6 @@
 <template lang="pug">
 .container.cards-container
-  router-link.card(:to="{ path: `/component/${card.engName}`, query: { name: card.name, ind: imgNumbers[i] }}", v-for="(card, i) in cards")
+  router-link.card(:to="{ path: `/component/${card.engName}`, query: { name: card.name, ind: imgNumbers[i] }}", v-for="(card, i) in cards", :key="card.engName")
     .card-item(:class="`card-item-${imgNumbers[i]}`")
       .card__text
         .subtitle.card__title {{ card.shortName }}

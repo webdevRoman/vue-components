@@ -1,7 +1,5 @@
 <template lang="pug">
   .home
-    //- .main__vue.main__vue_broken
-    //-   img(src="../assets/img/vue.svg", alt="Vue")
     Main
     Cards
     Footer
@@ -22,18 +20,3 @@ export default {
   }
 }
 </script>
-
-<style scoped lang="stylus">
-// .home
-//   .main
-//     &__vue
-//       position: absolute
-//       top: 320px
-//       left: 970px
-//       width: 450px
-//       cursor: pointer
-//       transition: 1s
-//       z-index 10
-//       &_broken
-//         top calc(100% - 368px)
-</style>
