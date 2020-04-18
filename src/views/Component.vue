@@ -5,18 +5,18 @@
         h2.header__title {{ $route.query.name }}
         .header__subtitle {{ $route.params.engName }}
     .component-section
-      Calendar(v-if="$route.params.engName === 'calendar'", :calendar-config="calendarConfig")
+      GrCalendar(v-if="$route.params.engName === 'calendar'", :gr-calendar-config="calendarConfig", v-model="calendarDate")
     Footer
 </template>
 
 <script>
-import Calendar from '@/components/Calendar.vue'
+import GrCalendar from '@/components/GrCalendar.vue'
 import Footer from '@/components/Footer.vue'
 
 export default {
-  name: 'MyComponent',
+  name: 'GrComponent',
   components: {
-    Calendar,
+    GrCalendar,
     Footer
   },
   data() {
@@ -25,10 +25,11 @@ export default {
         monthsDictionary: ['Янв', 'Фев', 'Март', 'Апр', 'Май', 'Июнь', 'Июль', 'Авг', 'Сент', 'Окт', 'Нояб', 'Дек'],
         weekdaysDictionary: ['Пон', 'Вто', 'Сре', 'Чет', 'Пят', 'Суб', 'Вос'],
         separator: '/',
-        disabledDays: ['Вос', 'Вто'],
-        disabledDaysBefore: '10/04/2020',
-        disabledDaysAfter: '15/04/2020'
-      }
+        disabledWeekdays: ['Вос', 'Вто'],
+        disabledDaysBefore: '10/03/2020',
+        disabledDaysAfter: '15/05/2020'
+      },
+      calendarDate: ''
     }
   }
   // mounted() {
