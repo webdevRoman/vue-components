@@ -5,7 +5,7 @@
         h2.header__title {{ $route.query.name }}
         .header__subtitle {{ $route.params.engName }}
     .component-section
-      Calendar(v-if="$route.params.engName === 'calendar'")
+      Calendar(v-if="$route.params.engName === 'calendar'", :calendar-config="calendarConfig")
     Footer
 </template>
 
@@ -18,6 +18,18 @@ export default {
   components: {
     Calendar,
     Footer
+  },
+  data() {
+    return {
+      calendarConfig: {
+        monthsDictionary: ['Янв', 'Фев', 'Март', 'Апр', 'Май', 'Июнь', 'Июль', 'Авг', 'Сент', 'Окт', 'Нояб', 'Дек'],
+        weekdaysDictionary: ['Пон', 'Вто', 'Сре', 'Чет', 'Пят', 'Суб', 'Вос'],
+        separator: '/',
+        disabledDays: ['Вос', 'Вто'],
+        disabledDaysBefore: '10/04/2020',
+        disabledDaysAfter: '15/04/2020'
+      }
+    }
   }
   // mounted() {
   //   const header = document.querySelector('.header')

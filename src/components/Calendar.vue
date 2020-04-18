@@ -13,7 +13,7 @@
         button.calendar-nav__arrow.calendar-nav__arrow_right(@click="changeMonth(1)")
     .table.calendar__body
       .table__row.calendar__weekdays
-        .table__cell.calendar__weekday(v-for="weekday in weekdaysDictionary") {{ weekday }}
+        .table__cell.calendar__weekday(v-for="(weekday, i) in weekdaysDictionary", :class="{'calendar__weekday_disabled': !!disabledDaysInd.find(curVal => curVal === i)}") {{ weekday }}
       .table__row(v-for="week in weeks")
         button.table__cell.calendar__date(v-for="date in week", :class="{'table__cell--today': date.today, 'table__cell--chosen': date.chosen}", :disabled="date.disabled", @click='chooseDate(date)') {{ date.text }}
 </template>
@@ -21,6 +21,7 @@
 <script>
 export default {
   name: 'Calendar',
+  props: ['calendarConfig'],
   data() {
     return {
       inputDate: '',
@@ -29,6 +30,9 @@ export default {
       month: '',
       date: new Date(),
       chosenDate: null,
+      disabledDaysInd: [],
+      disabledDaysBefore: null,
+      disabledDaysAfter: null,
       monthsDictionary: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
       weekdaysDictionary: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'],
       weeks: []
@@ -48,11 +52,16 @@ export default {
       dateStr += date.getFullYear()
       return dateStr
     },
+    getDateFromStr(dateStr) {
+      const dateArr = dateStr.split(this.separator)
+      return new Date(dateArr[2], parseInt(dateArr[1]) - 1, parseInt(dateArr[0]))
+    },
     getMonthWeeks(monthFirstDate) {
       const weeks = []
       const monthLastDate = new Date(monthFirstDate.getFullYear(), monthFirstDate.getMonth() + 1, 0)
       const decrementDaysNumber = monthFirstDate.getDay() === 0 ? 6 : monthFirstDate.getDay() - 1
       let startDate = new Date(monthFirstDate.getFullYear(), monthFirstDate.getMonth(), monthFirstDate.getDate() - decrementDaysNumber)
+      startDate.setHours(0, 0, 0, 0)
 
       let weeksNumber = 1
       let nextMonday = monthFirstDate
@@ -66,7 +75,12 @@ export default {
             date: new Date(startDate),
             text: startDate.getDate(),
             today: (this.formatDate(startDate) === this.formatDate(new Date())) ? true : false,
-            disabled: startDate.getMonth() === this.date.getMonth() ? false : true,
+            disabled: (
+              startDate.getMonth() === this.date.getMonth() &&
+              !this.disabledDaysInd.find(curVal => curVal === j) &&
+              (!this.disabledDaysBefore ? true : startDate >= this.disabledDaysBefore) &&
+              (!this.disabledDaysAfter ? true : startDate <= this.disabledDaysAfter)
+            ) ? false : true,
             chosen: (this.chosenDate !== null && this.formatDate(startDate) === this.formatDate(this.chosenDate)) ? true : false
           }
           startDate.setDate(startDate.getDate() + 1)
@@ -110,11 +124,37 @@ export default {
     }
   },
   created() {
+    // Config
+    if (this.calendarConfig.monthsDictionary && this.calendarConfig.monthsDictionary.length === 12)
+      this.monthsDictionary = this.calendarConfig.monthsDictionary
+    if (this.calendarConfig.weekdaysDictionary && this.calendarConfig.weekdaysDictionary.length === 7)
+      this.weekdaysDictionary = this.calendarConfig.weekdaysDictionary
+    if (this.calendarConfig.separator && this.calendarConfig.separator.length !== 0)
+      this.separator = this.calendarConfig.separator
+    if (this.calendarConfig.disabledDays && this.calendarConfig.disabledDays.length > 0 && this.calendarConfig.disabledDays.length <= 7)
+      this.calendarConfig.disabledDays.forEach(day => {
+        const ind = this.weekdaysDictionary.findIndex(curDay => curDay === day)
+        this.disabledDaysInd.push(ind)
+      })
+    if (this.calendarConfig.disabledDaysBefore)
+      if (this.calendarConfig.disabledDaysBefore === 'today') {
+        const today = new Date()
+        today.setHours(0, 0, 0, 0)
+        this.disabledDaysBefore = today
+      } else
+        this.disabledDaysBefore = this.getDateFromStr(this.calendarConfig.disabledDaysBefore)
+    if (this.calendarConfig.disabledDaysAfter)
+      if (this.calendarConfig.disabledDaysAfter === 'today') {
+        const today = new Date()
+        today.setHours(0, 0, 0, 0)
+        this.disabledDaysAfter = today
+      } else
+        this.disabledDaysAfter = this.getDateFromStr(this.calendarConfig.disabledDaysAfter)
+    
     const date = new Date()
     this.inputDate = '**' + this.separator + '**' + this.separator + '****'
     this.year = date.getFullYear()
     this.month = this.monthsDictionary[date.getMonth()]
-    // this.date = date.getDate()
     this.date = date
     const monthFirstDate = new Date(date.getFullYear(), date.getMonth(), 1)
     this.weeks = this.getMonthWeeks(monthFirstDate)
@@ -200,6 +240,9 @@ export default {
       color: $cFontLight
       &:hover
         background-color: $cBgDark
+  &__weekday
+    &_disabled
+      opacity 0.5
 
 .table
   &__row
@@ -217,7 +260,7 @@ export default {
     &:hover
       background-color: rgba($cActive, .4)
     &[disabled]
-      cursor default
+      cursor: default
       opacity: .5
       &:hover
         background-color: transparent
@@ -225,7 +268,7 @@ export default {
       background-color: rgba($cActive, .2)
     &--chosen
       background-color: $cActive
-      color $cBgLight
+      color: $cBgLight
       &[disabled]
         &:hover
           background-color: $cActive
