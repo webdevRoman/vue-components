@@ -6,12 +6,47 @@
         .header__subtitle {{ $route.params.engName }}
     .component-section
       GrCalendar(v-if="$route.params.engName === 'calendar'", :gr-calendar-config="calendarConfig", v-model="calendarDate")
+      .gr-slider-wrapper#gr-slider-wrapper(v-if="$route.params.engName === 'slider'")
+        .gr-slider-container#gr-slider-container
+          .gr-slider-item
+            .gr-slider-item__wrapper
+              .gr-slider-item__img
+                img(src="../assets/img/slider/ablefor.jpg", alt="Image")
+              .gr-slider-item__title Эублефар
+          .gr-slider-item
+            .gr-slider-item__wrapper
+              .gr-slider-item__img
+                img(src="../assets/img/slider/dog.jpg", alt="Image")
+              .gr-slider-item__title Австралийская овчарка
+          .gr-slider-item
+            .gr-slider-item__wrapper
+              .gr-slider-item__img
+                img(src="../assets/img/slider/parrot.jpg", alt="Image")
+              .gr-slider-item__title Попугай Корелла
+          .gr-slider-item
+            .gr-slider-item__wrapper
+              .gr-slider-item__img
+                img(src="../assets/img/slider/duck.jpg", alt="Image")
+              .gr-slider-item__title Утка
+          .gr-slider-item
+            .gr-slider-item__wrapper
+              .gr-slider-item__img
+                img(src="../assets/img/slider/packbot.jpg", alt="Image")
+              .gr-slider-item__title Малый поясохвост
+          .gr-slider-item
+            .gr-slider-item__wrapper
+              .gr-slider-item__img
+                img(src="../assets/img/slider/cat.jpg", alt="Image")
+              .gr-slider-item__title Кот
     Footer
 </template>
 
 <script>
 import GrCalendar from '@/components/GrCalendar.vue'
 import Footer from '@/components/Footer.vue'
+
+import '../assets/slider/GrSlider.styl'
+import { GrSlider } from '@/assets/slider/GrSlider.js'
 
 export default {
   name: 'GrComponent',
@@ -29,15 +64,21 @@ export default {
         disabledDaysBefore: '10/03/2020',
         disabledDaysAfter: '15/05/2020'
       },
-      calendarDate: ''
+      calendarDate: '',
+      sliderConfig: {
+        containerId: 'slider-container',
+        arrows: true,
+        navButtons: true
+      }
     }
+
+  },
+  mounted() {
+    const grSlider = new GrSlider({
+      arrowsEnabled: true,
+      navigationEnabled: true
+    })
   }
-  // mounted() {
-  //   const header = document.querySelector('.header')
-  //   const footer = document.querySelector('.footer')
-  //   const componentSection = document.querySelector('.component-section')
-  //   componentSection.style.minHeight = window.innerHeight - header.offsetHeight - footer.offsetHeight + 'px'
-  // }
 }
 </script>
 
@@ -108,4 +149,37 @@ export default {
     justify-content: center
     align-items: center
     padding: 100px 0
+
+// @import '../assets/slider/GrSlider'
+
+.gr
+  &-slider
+    &-item
+      display flex
+      justify-content center
+      align-items center
+      &__wrapper
+        position: relative
+        height 100%
+      &__img
+        height 100%
+        img
+          height 100%
+          width auto
+      &__title
+        position: absolute
+        bottom: 0
+        right: -60px
+        padding: 15px 45px
+        background-color: $cBgDark
+        font-size: 24px
+        font-weight: bold
+        color $cFontLight
+        text-align: center
+        text-transform: uppercase
+        box-shadow: -5px -5px 20px rgba(0, 0, 0, .5)
+.gr-slider-arrow
+  width 100px
+  height 100px
+  background-color red
 </style>

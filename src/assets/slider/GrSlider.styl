@@ -1,0 +1,63 @@
+@import '../styles/vars'
+
+.gr
+  &-slider
+    &-wrapper
+      position relative
+      height 500px
+      width 1200px
+      overflow hidden
+      &:before, &:after
+        position: absolute
+        top: 0
+        content: ''
+        display: block
+        height: 100%
+        width: 20px
+        background-color: $cBgLight
+        box-shadow: 0 0 40px 60px $cBgLight
+        z-index: 5
+      &:before
+        left: 0
+      &:after
+        right: 0
+    &-container
+      position: absolute
+      top 0
+      left 0
+      height 100%
+      display flex
+      white-space: nowrap
+    &-item
+      min-width 1200px
+      height: 100%
+    &-arrow
+      position absolute
+      top 50%
+      transform: translateY(-50%)
+      display flex
+      justify-content center
+      align-items center
+      width 60px
+      height 60px
+      border-radius 50%
+      transition 0.2s
+      cursor pointer
+      z-index 10
+      &:hover
+        background-color: rgba($cBgDark, .2)
+      &:after
+        content: ''
+        display block
+        width 50%
+        height 50%
+        border-top: 2px solid $cBgDark
+        border-right: 2px solid $cBgDark
+      &_left
+        left 0
+        &:after
+          transform: rotate(-135deg) translate(-10%, 10%)
+      &_right
+        right 0
+        &:after
+          transform: rotate(45deg) translate(-10%, 10%)
