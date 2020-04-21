@@ -21,13 +21,9 @@ export default {
         shortName: 'слайдер',
         engName: 'slider',
       }, {
-        name: 'модальное окно',
-        shortName: 'модальное окно',
-        engName: 'modal',
-      }, {
-        name: 'горизонтальный аккордеон',
-        shortName: 'гориз. аккордеон',
-        engName: 'horizontal accordion',
+        name: 'флажки',
+        shortName: 'флажки',
+        engName: 'checkboxes',
       }]
     }
   },
@@ -36,7 +32,6 @@ export default {
       const imgNumbers = []
       for (let i = 0; i < this.cards.length; i++)
         imgNumbers.push(Math.ceil(Math.random() * 5))
-        // imgNumbers.push(`card-item-${Math.ceil(Math.random() * 5)}`)
       return imgNumbers
     }
   },
@@ -59,13 +54,23 @@ function rotate(event) {
   const cardItem = this.querySelector('.card-item')
   const halfHeight = cardItem.offsetHeight / 2
   const halfWidth = cardItem.offsetWidth / 2
-  cardItem.style.transform = `rotateX(${-(event.offsetY - halfWidth) / 15}deg) rotateY(${(event.offsetX - halfHeight) / 15}deg)`
+  const rect = cardItem.getBoundingClientRect(),
+    scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+    scrollTop = window.pageYOffset || document.documentElement.scrollTop
+  // if (event.target.classList.contains('card-item'))
+  // cardItem.style.transform = `rotateX(${-(event.offsetY - halfWidth) / 15}deg) rotateY(${(event.offsetX - halfHeight) / 15}deg)`
+  cardItem.style.transform = `rotateX(${-(event.pageY - rect.top - scrollTop - halfWidth) / 15}deg) rotateY(${(event.pageX - rect.left - scrollLeft - halfHeight) / 15}deg)`
 }
-function stopRotate() {
+function stopRotate(event) {
   const cardItem = this.querySelector('.card-item')
-  cardItem.style.transition = '0.2s'
-  setTimeout(() => { cardItem.style.transition = 'none' }, 210)
-  cardItem.style.transform = 'rotate(0)'
+  const rect = cardItem.getBoundingClientRect(),
+    scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+    scrollTop = window.pageYOffset || document.documentElement.scrollTop
+  if (event.pageY - rect.top - scrollTop < 0 || event.pageY - rect.top - scrollTop > cardItem.offsetHeight || event.pageX - rect.left - scrollLeft < 0 || event.pageX - rect.left - scrollLeft > cardItem.offsetWidth) {
+    cardItem.style.transition = '0.2s'
+    setTimeout(() => { cardItem.style.transition = 'none' }, 210)
+    cardItem.style.transform = 'rotate(0)'
+  }
 }
 </script>
 

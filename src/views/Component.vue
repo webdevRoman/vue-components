@@ -36,13 +36,20 @@
           .gr-slider-item
             .gr-slider-item__wrapper
               .gr-slider-item__img
+                img(src="../assets/img/slider/hedgehog.jpg", alt="Image")
+              .gr-slider-item__title Ёж
+          .gr-slider-item
+            .gr-slider-item__wrapper
+              .gr-slider-item__img
                 img(src="../assets/img/slider/cat.jpg", alt="Image")
               .gr-slider-item__title Кот
+      GrCheckboxes(v-if="$route.params.engName === 'checkboxes'", :gr-checkboxes-config="checkboxesConfig", v-model="chosenCheckboxes")
     Footer
 </template>
 
 <script>
 import GrCalendar from '@/components/GrCalendar.vue'
+import GrCheckboxes from '@/components/GrCheckboxes.vue'
 import Footer from '@/components/Footer.vue'
 
 import '../assets/slider/GrSlider.styl'
@@ -52,6 +59,7 @@ export default {
   name: 'GrComponent',
   components: {
     GrCalendar,
+    GrCheckboxes,
     Footer
   },
   data() {
@@ -69,15 +77,21 @@ export default {
         containerId: 'slider-container',
         arrows: true,
         navButtons: true
-      }
+      },
+      checkboxesConfig: {
+        values: ['Чекбокс 1', 'Чекбокс 2', 'Чекбокс 3']
+      },
+      chosenCheckboxes: []
     }
 
   },
   mounted() {
-    const grSlider = new GrSlider({
-      arrowsEnabled: true,
-      navigationEnabled: true
-    })
+    if (this.$route.params.engName === 'calendar') {
+      const grSlider = new GrSlider({
+        arrowsEnabled: true,
+        navigationEnabled: true
+      })
+    }
   }
 }
 </script>
