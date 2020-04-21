@@ -47,6 +47,9 @@
       &:hover
         background-color: rgba($cBgDark, .2)
       &:after
+        position: absolute
+        top: 50%
+        left: 50%
         content: ''
         display block
         width 50%
@@ -56,8 +59,26 @@
       &_left
         left 0
         &:after
-          transform: rotate(-135deg) translate(-10%, 10%)
+          transform: translate(-30%, -50%) rotate(-135deg)
       &_right
         right 0
         &:after
-          transform: rotate(45deg) translate(-10%, 10%)
+          transform: translate(-70%, -50%) rotate(45deg)
+    &-nav
+      position absolute
+      // top 105%
+      bottom 0
+      left 50%
+      transform: translateX(-50%)
+      &__item
+        width 15px
+        height 15px
+        background-color $cBgDark
+        margin 0 10px
+        transition 0.2s
+        &:hover
+          background-color: $cBgMiddle
+        &_active
+          background-color $cActive
+          &:hover
+            background-color: $cActive
