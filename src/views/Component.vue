@@ -79,11 +79,11 @@ export default {
         navButtons: true
       },
       checkboxesConfig: {
-        values: ['Чекбокс 1', 'Чекбокс 2', 'Чекбокс 3']
+        values: ['Чекбокс 1', 'Чекбокс 2', 'Чекбокс 3'],
+        keys: ['chb1', 'chb2', 'chb3']
       },
       chosenCheckboxes: []
     }
-
   },
   mounted() {
     if (this.$route.params.engName === 'calendar') {
