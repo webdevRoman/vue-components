@@ -143,12 +143,16 @@ export default {
     }
   }
   // watch: {
-  //   chosenRadiobutton(val) {
-  //     console.log(val)
-  //   },
-  //   chosenCheckboxes(val) {
-  //     console.log(val)
-  //   }
+    // chosenRadiobutton(val) {
+    //   console.log(val)
+    // },
+    // chosenCheckboxes(val) {
+    //   console.log(val)
+    // }
+    // '$route.query.ind'(val) {
+    //   console.log(this.$route)
+    //   this.$router.push({ path: this.$route.path, query: this.$route.query })
+    // }
   // }
 }
 </script>
