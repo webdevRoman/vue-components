@@ -44,12 +44,16 @@
                 img(src="../assets/img/slider/cat.jpg", alt="Image")
               .gr-slider-item__title Кот
       GrCheckboxes(v-if="$route.params.engName === 'checkboxes'", :gr-checkboxes-config="checkboxesConfig", v-model="chosenCheckboxes")
+      GrRadiobuttons(v-if="$route.params.engName === 'radiobuttons'", :gr-radiobuttons-config="radiobuttonsConfig", v-model="chosenRadiobutton")
+      GrMenu(v-if="$route.params.engName === 'menu'", :gr-menu-config="menuConfig")
     Footer
 </template>
 
 <script>
 import GrCalendar from '@/components/GrCalendar.vue'
 import GrCheckboxes from '@/components/GrCheckboxes.vue'
+import GrRadiobuttons from '@/components/GrRadiobuttons.vue'
+import GrMenu from '@/components/GrMenu.vue'
 import Footer from '@/components/Footer.vue'
 
 import '../assets/slider/GrSlider.styl'
@@ -60,6 +64,8 @@ export default {
   components: {
     GrCalendar,
     GrCheckboxes,
+    GrRadiobuttons,
+    GrMenu,
     Footer
   },
   data() {
@@ -82,7 +88,50 @@ export default {
         values: ['Чекбокс 1', 'Чекбокс 2', 'Чекбокс 3'],
         keys: ['chb1', 'chb2', 'chb3']
       },
-      chosenCheckboxes: []
+      chosenCheckboxes: [],
+      radiobuttonsConfig: {
+        values: ['Переключатель 1', 'Переключатель 2', 'Переключатель 3'],
+        keys: ['rb1', 'rb2', 'rb3']
+      },
+      chosenRadiobutton: '',
+      menuConfig: {
+        items: [{
+          link: {
+            path: '/component',
+            params: ['menu'],
+            query: { name: 'меню', ind: '1' }
+          },
+          title: 'Главная'
+        }, {
+          link: {
+            path: '/component',
+            params: ['menu'],
+            query: { name: 'меню', ind: '2' }
+          },
+          title: 'О нас'
+        }, {
+          link: {
+            path: '/component',
+            params: ['menu'],
+            query: { name: 'меню', ind: '3' }
+          },
+          title: 'Портфолио'
+        }, {
+          link: {
+            path: '/component',
+            params: ['menu'],
+            query: { name: 'меню', ind: '4' }
+          },
+          title: 'Блог'
+        }, {
+          link: {
+            path: '/component',
+            params: ['menu'],
+            query: { name: 'меню', ind: '5' }
+          },
+          title: 'Контакты'
+        }]
+      }
     }
   },
   mounted() {
@@ -93,6 +142,14 @@ export default {
       })
     }
   }
+  // watch: {
+  //   chosenRadiobutton(val) {
+  //     console.log(val)
+  //   },
+  //   chosenCheckboxes(val) {
+  //     console.log(val)
+  //   }
+  // }
 }
 </script>
 

@@ -37,7 +37,7 @@ export default {
     }
   },
   created() {
-    if (this.grCheckboxesConfig.keys.length === this.grCheckboxesConfig.values.length)
+    if (this.grCheckboxesConfig.keys && this.grCheckboxesConfig.keys.length === this.grCheckboxesConfig.values.length)
       this.keysEnabled = true
     if (this.keysEnabled)
       for (let i = 0; i < this.grCheckboxesConfig.values.length; i++)
@@ -62,7 +62,7 @@ export default {
 
 .gr
   &-checkboxes
-    width 400px
+    min-width 400px
     padding 20px 40px
     box-shadow: 0 0 20px rgba(0, 0, 0, .3)
   &-checkbox

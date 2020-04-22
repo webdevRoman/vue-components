@@ -24,6 +24,14 @@ export default {
         name: 'флажки',
         shortName: 'флажки',
         engName: 'checkboxes',
+      }, {
+        name: 'переключатели',
+        shortName: 'переключатели',
+        engName: 'radiobuttons',
+      }, {
+        name: 'меню',
+        shortName: 'меню',
+        engName: 'menu',
       }]
     }
   },
