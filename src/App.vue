@@ -13,4 +13,8 @@
       margin-bottom 20px
       &:last-child
         margin-bottom 0
+  &-select
+    margin-right 20px
+    &:last-child
+      margin-right 0
 </style>

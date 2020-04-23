@@ -36,6 +36,10 @@ export default {
         name: 'модальное окно',
         shortName: 'модальное окно',
         engName: 'modal',
+      }, {
+        name: 'раскрывающийся список',
+        shortName: 'раскр. список',
+        engName: 'select',
       }]
     }
   },

@@ -50,6 +50,10 @@
         GrModal#modal-alert(:gr-modal-config="modalAlertConfig")
         GrModal#modal-confirm(:gr-modal-config="modalConfirmConfig", v-model="modalConfirmed")
         GrModal#modal-input(:gr-modal-config="modalInputConfig", v-model="modalInput")
+      .gr-selects(v-if="$route.params.engName === 'select'")
+        GrSelect#select-single(:gr-select-config="selectSingleConfig", v-model="selectSingle")
+        GrSelect#select-multiple(:gr-select-config="selectMultipleConfig", v-model="selectMultiple")
+        GrSelect#select-items-multiple(:gr-select-config="selectItemsMultipleConfig", v-model="selectItemsMultiple")
     Footer
 </template>
 
@@ -59,6 +63,7 @@ import GrCheckboxes from '@/components/GrCheckboxes.vue'
 import GrRadiobuttons from '@/components/GrRadiobuttons.vue'
 import GrMenu from '@/components/GrMenu.vue'
 import GrModal from '@/components/GrModal.vue'
+import GrSelect from '@/components/GrSelect.vue'
 import Footer from '@/components/Footer.vue'
 
 import '../assets/slider/GrSlider.styl'
@@ -72,6 +77,7 @@ export default {
     GrRadiobuttons,
     GrMenu,
     GrModal,
+    GrSelect,
     Footer
   },
   data() {
@@ -139,24 +145,41 @@ export default {
         }]
       },
       modalAlertConfig: {
-        buttonTitle: 'Alert',
+        buttonTitle: 'Сообщение',
         title: 'Заголовок для модального окна',
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Scelerisque viverra mauris in aliquam sem fringilla ut morbi. Duis ultricies lacus sed turpis tincidunt id aliquet risus. Integer vitae justo eget magna fermentum iaculis eu non. Lobortis feugiat vivamus at augue eget arcu dictum varius duis. Ipsum consequat nisl vel pretium lectus quam id leo. Sit amet massa vitae tortor condimentum lacinia quis. Facilisis gravida neque convallis a. Nec dui nunc mattis enim ut tellus. Fames ac turpis egestas sed tempus. Vulputate ut pharetra sit amet aliquam id.'
       },
       modalConfirmConfig: {
-        buttonTitle: 'Confirm',
+        buttonTitle: 'Подтверждение',
         title: 'Заголовок для модального окна',
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Scelerisque viverra mauris in aliquam sem fringilla ut morbi. Duis ultricies lacus sed turpis tincidunt id aliquet risus. Integer vitae justo eget magna fermentum iaculis eu non. Lobortis feugiat vivamus at augue eget arcu dictum varius duis. Ipsum consequat nisl vel pretium lectus quam id leo. Sit amet massa vitae tortor condimentum lacinia quis. Facilisis gravida neque convallis a. Nec dui nunc mattis enim ut tellus. Fames ac turpis egestas sed tempus. Vulputate ut pharetra sit amet aliquam id.',
         confirmEnabled: true
       },
       modalConfirmed: false,
       modalInputConfig: {
-        buttonTitle: 'Input',
+        buttonTitle: 'Ввод',
         title: 'Заголовок для модального окна',
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Scelerisque viverra mauris in aliquam sem fringilla ut morbi. Duis ultricies lacus sed turpis tincidunt id aliquet risus. Integer vitae justo eget magna fermentum iaculis eu non. Lobortis feugiat vivamus at augue eget arcu dictum varius duis. Ipsum consequat nisl vel pretium lectus quam id leo. Sit amet massa vitae tortor condimentum lacinia quis. Facilisis gravida neque convallis a. Nec dui nunc mattis enim ut tellus. Fames ac turpis egestas sed tempus. Vulputate ut pharetra sit amet aliquam id.',
         inputEnabled: true
       },
-      modalInput: ''
+      modalInput: '',
+      selectSingleConfig: {
+        values: ['Элемент 1', 'Элемент 2', 'Элемент 3', 'Элемент 4', 'Элемент 5', 'Элемент 6', 'Элемент 7', 'Элемент 8', 'Элемент 9', 'Элемент 10'],
+        keys: ['el1', 'el2', 'el3', 'el4', 'el5', 'el6', 'el7', 'el8', 'el9', 'el10']
+      },
+      selectSingle: '',
+      selectMultipleConfig: {
+        isMultiple: true,
+        values: ['Элемент 1', 'Элемент 2', 'Элемент 3', 'Элемент 4', 'Элемент 5', 'Элемент 6', 'Элемент 7', 'Элемент 8', 'Элемент 9', 'Элемент 10']
+      },
+      selectMultiple: [],
+      selectItemsMultipleConfig: {
+        isMultiple: true,
+        values: ['Элемент 1', 'Элемент 2', 'Элемент 3', 'Элемент 4', 'Элемент 5', 'Элемент 6', 'Элемент 7', 'Элемент 8', 'Элемент 9', 'Элемент 10'],
+        itemsMultiple: true,
+        maxItemQuantity: 15
+      },
+      selectItemsMultiple: []
     }
   },
   mounted() {
@@ -182,6 +205,15 @@ export default {
     //   console.log(val)
     // }
     // modalInput(val) {
+    //   console.log(val)
+    // }
+    // selectSingle(val) {
+    //   console.log(val)
+    // }
+    // selectMultiple(val) {
+    //   console.log(val)
+    // }
+    // selectItemsMultiple(val) {
     //   console.log(val)
     // }
   // }
@@ -289,6 +321,10 @@ export default {
     justify-content center
     align-items center
     flex-direction column
+  &-selects
+    display flex
+    justify-content center
+    align-items center
 .gr-slider-arrow
   width 100px
   height 100px
