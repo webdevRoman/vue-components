@@ -49,6 +49,7 @@
       .gr-modals(v-if="$route.params.engName === 'modal'")
         GrModal#modal-alert(:gr-modal-config="modalAlertConfig")
         GrModal#modal-confirm(:gr-modal-config="modalConfirmConfig", v-model="modalConfirmed")
+        GrModal#modal-input(:gr-modal-config="modalInputConfig", v-model="modalInput")
     Footer
 </template>
 
@@ -148,7 +149,14 @@ export default {
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Scelerisque viverra mauris in aliquam sem fringilla ut morbi. Duis ultricies lacus sed turpis tincidunt id aliquet risus. Integer vitae justo eget magna fermentum iaculis eu non. Lobortis feugiat vivamus at augue eget arcu dictum varius duis. Ipsum consequat nisl vel pretium lectus quam id leo. Sit amet massa vitae tortor condimentum lacinia quis. Facilisis gravida neque convallis a. Nec dui nunc mattis enim ut tellus. Fames ac turpis egestas sed tempus. Vulputate ut pharetra sit amet aliquam id.',
         confirmEnabled: true
       },
-      modalConfirmed: false
+      modalConfirmed: false,
+      modalInputConfig: {
+        buttonTitle: 'Input',
+        title: 'Заголовок для модального окна',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Scelerisque viverra mauris in aliquam sem fringilla ut morbi. Duis ultricies lacus sed turpis tincidunt id aliquet risus. Integer vitae justo eget magna fermentum iaculis eu non. Lobortis feugiat vivamus at augue eget arcu dictum varius duis. Ipsum consequat nisl vel pretium lectus quam id leo. Sit amet massa vitae tortor condimentum lacinia quis. Facilisis gravida neque convallis a. Nec dui nunc mattis enim ut tellus. Fames ac turpis egestas sed tempus. Vulputate ut pharetra sit amet aliquam id.',
+        inputEnabled: true
+      },
+      modalInput: ''
     }
   },
   mounted() {
@@ -171,6 +179,9 @@ export default {
     //   this.$router.push({ path: this.$route.path, query: this.$route.query })
     // }
     // modalConfirmed(val) {
+    //   console.log(val)
+    // }
+    // modalInput(val) {
     //   console.log(val)
     // }
   // }

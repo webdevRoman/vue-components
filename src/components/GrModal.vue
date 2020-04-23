@@ -6,7 +6,8 @@
       button.gr-modal-window__close(@click="closeModal") &times;
       .gr-modal-window__title(v-if="grModalConfig.title") {{ grModalConfig.title }}
       .gr-modal-window__text(v-if="grModalConfig.text") {{ grModalConfig.text }}
-      .gr-modal-window__confirmation(v-if="grModalConfig.confirmEnabled")
+      input.gr-modal-window__input(type="text", v-if="grModalConfig.inputEnabled", v-model="modalInput")
+      .gr-modal-window__confirmation(v-if="grModalConfig.confirmEnabled || grModalConfig.inputEnabled")
         button.gr-modal-window__btn.gr-modal-window__btn--close(@click="closeModal") Отмена
         button.gr-modal-window__btn.gr-modal-window__btn--confirm(@click="confirmModal") Подтвердить
 </template>
@@ -15,20 +16,33 @@
 export default {
   name: 'GrModal',
   props: ['grModalConfig'],
+  data() {
+    return {
+      modalInput: ''
+    }
+  },
   methods: {
     openModal() {
-      this.$emit('input', false)
+      if (this.grModalConfig.inputEnabled)
+        this.$emit('input', '')
+      else
+        this.$emit('input', false)
       const modal = document.getElementById(this.$attrs.id).querySelector('.gr-modal-overlay')
       modal.style.display = 'flex'
       setTimeout(() => { modal.style.opacity = '1' }, 10)
     },
     closeModal() {
+      if (this.grModalConfig.inputEnabled)
+        this.modalInput = ''
       const modal = document.getElementById(this.$attrs.id).querySelector('.gr-modal-overlay')
       modal.style.opacity = '0'
       setTimeout(() => { modal.style.display = 'none' }, 200)
     },
     confirmModal() {
-      this.$emit('input', true)
+      if (this.grModalConfig.inputEnabled)
+        this.$emit('input', this.modalInput)
+      else
+        this.$emit('input', true)
       this.closeModal()
     }
   }
@@ -88,6 +102,17 @@ export default {
       &__text
         font-size: 18px
         line-height: 1.5
+      &__input
+        display: block
+        width: 420px
+        border-bottom: 2px solid $cBgDark
+        font-family: $font
+        font-size: 24px
+        text-align: center
+        margin: 30px auto 0 auto
+        transition: .2s
+        &:hover, &:focus
+          border-bottom: 2px solid $cActive
       &__confirmation
         display flex
         justify-content center
