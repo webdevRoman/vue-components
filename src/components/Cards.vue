@@ -32,6 +32,10 @@ export default {
         name: 'меню',
         shortName: 'меню',
         engName: 'menu',
+      }, {
+        name: 'модальное окно',
+        shortName: 'модальное окно',
+        engName: 'modal',
       }]
     }
   },

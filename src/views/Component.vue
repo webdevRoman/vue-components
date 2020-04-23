@@ -46,6 +46,9 @@
       GrCheckboxes(v-if="$route.params.engName === 'checkboxes'", :gr-checkboxes-config="checkboxesConfig", v-model="chosenCheckboxes")
       GrRadiobuttons(v-if="$route.params.engName === 'radiobuttons'", :gr-radiobuttons-config="radiobuttonsConfig", v-model="chosenRadiobutton")
       GrMenu(v-if="$route.params.engName === 'menu'", :gr-menu-config="menuConfig")
+      .gr-modals(v-if="$route.params.engName === 'modal'")
+        GrModal#modal-alert(:gr-modal-config="modalAlertConfig")
+        GrModal#modal-confirm(:gr-modal-config="modalConfirmConfig", v-model="modalConfirmed")
     Footer
 </template>
 
@@ -54,6 +57,7 @@ import GrCalendar from '@/components/GrCalendar.vue'
 import GrCheckboxes from '@/components/GrCheckboxes.vue'
 import GrRadiobuttons from '@/components/GrRadiobuttons.vue'
 import GrMenu from '@/components/GrMenu.vue'
+import GrModal from '@/components/GrModal.vue'
 import Footer from '@/components/Footer.vue'
 
 import '../assets/slider/GrSlider.styl'
@@ -66,6 +70,7 @@ export default {
     GrCheckboxes,
     GrRadiobuttons,
     GrMenu,
+    GrModal,
     Footer
   },
   data() {
@@ -131,17 +136,29 @@ export default {
           },
           title: 'Контакты'
         }]
-      }
+      },
+      modalAlertConfig: {
+        buttonTitle: 'Alert',
+        title: 'Заголовок для модального окна',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Scelerisque viverra mauris in aliquam sem fringilla ut morbi. Duis ultricies lacus sed turpis tincidunt id aliquet risus. Integer vitae justo eget magna fermentum iaculis eu non. Lobortis feugiat vivamus at augue eget arcu dictum varius duis. Ipsum consequat nisl vel pretium lectus quam id leo. Sit amet massa vitae tortor condimentum lacinia quis. Facilisis gravida neque convallis a. Nec dui nunc mattis enim ut tellus. Fames ac turpis egestas sed tempus. Vulputate ut pharetra sit amet aliquam id.'
+      },
+      modalConfirmConfig: {
+        buttonTitle: 'Confirm',
+        title: 'Заголовок для модального окна',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Scelerisque viverra mauris in aliquam sem fringilla ut morbi. Duis ultricies lacus sed turpis tincidunt id aliquet risus. Integer vitae justo eget magna fermentum iaculis eu non. Lobortis feugiat vivamus at augue eget arcu dictum varius duis. Ipsum consequat nisl vel pretium lectus quam id leo. Sit amet massa vitae tortor condimentum lacinia quis. Facilisis gravida neque convallis a. Nec dui nunc mattis enim ut tellus. Fames ac turpis egestas sed tempus. Vulputate ut pharetra sit amet aliquam id.',
+        confirmEnabled: true
+      },
+      modalConfirmed: false
     }
   },
   mounted() {
-    if (this.$route.params.engName === 'calendar') {
+    if (this.$route.params.engName === 'slider') {
       const grSlider = new GrSlider({
         arrowsEnabled: true,
         navigationEnabled: true
       })
     }
-  }
+  },
   // watch: {
     // chosenRadiobutton(val) {
     //   console.log(val)
@@ -152,6 +169,9 @@ export default {
     // '$route.query.ind'(val) {
     //   console.log(this.$route)
     //   this.$router.push({ path: this.$route.path, query: this.$route.query })
+    // }
+    // modalConfirmed(val) {
+    //   console.log(val)
     // }
   // }
 }
@@ -253,6 +273,11 @@ export default {
         text-align: center
         text-transform: uppercase
         box-shadow: -5px -5px 20px rgba(0, 0, 0, .5)
+  &-modals
+    display flex
+    justify-content center
+    align-items center
+    flex-direction column
 .gr-slider-arrow
   width 100px
   height 100px
