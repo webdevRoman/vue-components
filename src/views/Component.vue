@@ -104,6 +104,9 @@
             .gr-accordion-item__content
               p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar sapien. Amet consectetur adipiscing elit duis tristique sollicitudin. Amet est placerat in egestas erat. Id donec ultrices tincidunt arcu non sodales neque sodales ut. Amet venenatis urna cursus eget nunc scelerisque viverra. Faucibus purus in massa tempor nec feugiat. Lobortis mattis aliquam faucibus purus in massa tempor nec. Fames ac turpis egestas maecenas pharetra convallis. Elementum nisi quis eleifend quam. Feugiat scelerisque varius morbi enim nunc. Quisque id diam vel quam elementum pulvinar etiam non. Amet mattis vulputate enim nulla aliquet porttitor lacus. Sem nulla pharetra diam sit. Lectus urna duis convallis convallis tellus id interdum velit laoreet. Donec ultrices tincidunt arcu non sodales. Dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in. Quisque sagittis purus sit amet volutpat. Amet cursus sit amet dictum sit amet justo donec enim. Congue quisque egestas diam in arcu cursus.
               p Elit sed vulputate mi sit amet mauris commodo. Sed risus pretium quam vulputate dignissim. Eu non diam phasellus vestibulum lorem sed risus. Suspendisse sed nisi lacus sed viverra tellus in hac habitasse. Nisl suscipit adipiscing bibendum est ultricies integer. Amet commodo nulla facilisi nullam. Non tellus orci ac auctor augue mauris augue neque. Curabitur gravida arcu ac tortor dignissim convallis. Libero volutpat sed cras ornare. Cursus risus at ultrices mi tempus imperdiet. Arcu non sodales neque sodales ut etiam. Dolor purus non enim praesent. Tincidunt vitae semper quis lectus nulla at volutpat diam ut. Non odio euismod lacinia at quis risus sed vulputate odio. Ac odio tempor orci dapibus ultrices in.
+      .gr-preloader-wrapper
+        button.gr-preloader-button(@click="showPreloader") Показать анимацию загрузки
+        .gr-preloader#gr-preloader(v-if="$route.params.engName === 'preloader'")
     Footer
 </template>
 
@@ -124,6 +127,9 @@ import { GrTabs } from '@/assets/tabs/GrTabs.js'
 
 import '../assets/accordion/GrAccordion.styl'
 import { GrAccordion } from '@/assets/accordion/GrAccordion.js'
+
+import '../assets/preloader/GrPreloader.styl'
+import { GrPreloader } from '@/assets/preloader/GrPreloader.js'
 
 export default {
   name: 'GrComponent',
@@ -235,7 +241,14 @@ export default {
         itemsMultiple: true,
         maxItemQuantity: 15
       },
-      selectItemsMultiple: []
+      selectItemsMultiple: [],
+      preloader: null
+    }
+  },
+  methods: {
+    showPreloader() {
+      this.preloader.showPreloader()
+      setTimeout(() => { this.preloader.hidePreloader() }, 5000)
     }
   },
   mounted() {
@@ -257,6 +270,9 @@ export default {
         // defaultOpened: true,
         defaultOpenedItems: [0]
       })
+    }
+    if (this.$route.params.engName === 'preloader') {
+      this.preloader = new GrPreloader()
     }
   },
   // watch: {
@@ -412,6 +428,18 @@ export default {
     iframe
       display block
       margin 0 auto
+  &-preloader
+    &-button
+      padding 10px 20px
+      background-color $cBgDark
+      font-family $font
+      font-weight bold
+      color $cFontLight
+      text-transform uppercase
+      transition 0.2s
+      &:hover
+        padding 10px 30px
+        color $cActive
 .gr-slider-arrow
   width 100px
   height 100px

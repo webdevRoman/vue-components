@@ -48,6 +48,10 @@ export default {
         name: 'аккордеон',
         shortName: 'аккордеон',
         engName: 'accordion',
+      }, {
+        name: 'анимация загрузки',
+        shortName: 'анимация загрузки',
+        engName: 'preloader',
       }]
     }
   },

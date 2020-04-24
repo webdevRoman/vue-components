@@ -1,0 +1,43 @@
+@import '../styles/vars'
+
+.gr
+  &-preloader
+    &__overlay
+      position: fixed
+      top: 0
+      left: 0
+      width: 100vw
+      height: 100vh
+      display: none
+      justify-content: center
+      align-items: center
+      background-color: rgba(#000, .85)
+      opacity: 0
+      z-index: 51
+      transition: .2s
+    &__animation
+      display: flex
+      justify-content: center
+      align-items: center
+    &__dot
+      width: 20px
+      height: 20px
+      border-radius: 50%
+      background-color: $cActive
+      margin-right: 15px
+      animation: bound 1.2s infinite cubic-bezier(.6, .2, .4, .8)
+      &:nth-child(2)
+        animation-delay: .13s
+      &:last-child
+        margin-right: 0
+        animation-delay: .26s
+
+@keyframes bound
+  from
+    transform: translateY(0)
+  43%
+    transform: translateY(150%)
+  86%
+    transform: translateY(0)
+  to
+    transform: translateY(0)
