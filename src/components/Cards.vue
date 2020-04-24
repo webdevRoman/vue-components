@@ -40,6 +40,14 @@ export default {
         name: 'раскрывающийся список',
         shortName: 'раскр. список',
         engName: 'select',
+      }, {
+        name: 'табы',
+        shortName: 'табы',
+        engName: 'tabs',
+      }, {
+        name: 'аккордеон',
+        shortName: 'аккордеон',
+        engName: 'accordion',
       }]
     }
   },

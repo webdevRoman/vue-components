@@ -1,7 +1,7 @@
 <template lang="pug">
-.gr-calendar#gr-calendar
+.gr-calendar
   input.gr-calendar__input(type="text", readonly, v-model="inputDate", @click="toggleCalendar")
-  .gr-calendar__popup#gr-calendar-popup
+  .gr-calendar__popup
     .gr-calendar__header
       .gr-calendar-nav
         button.gr-calendar-nav__arrow.gr-calendar-nav__arrow_left(@click="changeMonth(-12)")
@@ -89,21 +89,21 @@ export default {
       return weeks
     },
     openCalendar() {
-      const calendar = document.getElementById('gr-calendar-popup')
+      const calendar = document.getElementById(this.$attrs.id).querySelector('.gr-calendar__popup')
       calendar.style.display = 'block'
       setTimeout(() => { calendar.classList.add('gr-calendar__popup_active') }, 50)
-      const input = document.getElementById('gr-calendar')
+      const input = document.getElementById(this.$attrs.id)
       input.style.marginBottom = parseInt(input.style.marginBottom) + calendar.offsetHeight + 'px'
     },
     closeCalendar() {
-      const calendar = document.getElementById('gr-calendar-popup')
-      const input = document.getElementById('gr-calendar')
+      const calendar = document.getElementById(this.$attrs.id).querySelector('.gr-calendar__popup')
+      const input = document.getElementById(this.$attrs.id)
       input.style.marginBottom = '0px'
       calendar.classList.remove('gr-calendar__popup_active')
       setTimeout(() => { calendar.style.display = 'none' }, 250)
     },
     toggleCalendar() {
-      const calendar = document.getElementById('gr-calendar-popup')
+      const calendar = document.getElementById(this.$attrs.id).querySelector('.gr-calendar__popup')
       if (calendar.classList.contains('gr-calendar__popup_active')) {
         this.closeCalendar()
       } else {
@@ -161,9 +161,9 @@ export default {
     this.weeks = this.getMonthWeeks(monthFirstDate)
   },
   mounted() {
-    const calendar = document.getElementById('gr-calendar-popup')
+    const calendar = document.getElementById(this.$attrs.id).querySelector('.gr-calendar__popup')
     calendar.style.display = 'none'
-    const input = document.getElementById('gr-calendar')
+    const input = document.getElementById(this.$attrs.id)
     input.style.marginBottom = '0px'
   }
 }

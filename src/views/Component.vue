@@ -5,7 +5,7 @@
         h2.header__title {{ $route.query.name }}
         .header__subtitle {{ $route.params.engName }}
     .component-section
-      GrCalendar(v-if="$route.params.engName === 'calendar'", :gr-calendar-config="calendarConfig", v-model="calendarDate")
+      GrCalendar#calendar(v-if="$route.params.engName === 'calendar'", :gr-calendar-config="calendarConfig", v-model="calendarDate")
       .gr-slider-wrapper#gr-slider-wrapper(v-if="$route.params.engName === 'slider'")
         .gr-slider-container#gr-slider-container
           .gr-slider-item
@@ -54,6 +54,56 @@
         GrSelect#select-single(:gr-select-config="selectSingleConfig", v-model="selectSingle")
         GrSelect#select-multiple(:gr-select-config="selectMultipleConfig", v-model="selectMultiple")
         GrSelect#select-items-multiple(:gr-select-config="selectItemsMultipleConfig", v-model="selectItemsMultiple")
+      .gr-tabs#gr-tabs(v-if="$route.params.engName === 'tabs'")
+        .gr-tabs-nav
+          button.gr-tabs-nav__item Текст 1
+          button.gr-tabs-nav__item Текст с картинкой
+          button.gr-tabs-nav__item Текст 2
+          button.gr-tabs-nav__item Текст с видео
+          button.gr-tabs-nav__item Текст 3
+        .gr-tabs-content
+          .gr-tabs-content__item
+            p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar sapien. Amet consectetur adipiscing elit duis tristique sollicitudin. Amet est placerat in egestas erat. Id donec ultrices tincidunt arcu non sodales neque sodales ut. Amet venenatis urna cursus eget nunc scelerisque viverra. Faucibus purus in massa tempor nec feugiat. Lobortis mattis aliquam faucibus purus in massa tempor nec. Fames ac turpis egestas maecenas pharetra convallis. Elementum nisi quis eleifend quam. Feugiat scelerisque varius morbi enim nunc. Quisque id diam vel quam elementum pulvinar etiam non. Amet mattis vulputate enim nulla aliquet porttitor lacus. Sem nulla pharetra diam sit. Lectus urna duis convallis convallis tellus id interdum velit laoreet. Donec ultrices tincidunt arcu non sodales. Dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in. Quisque sagittis purus sit amet volutpat. Amet cursus sit amet dictum sit amet justo donec enim. Congue quisque egestas diam in arcu cursus.
+          .gr-tabs-content__item
+            p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar sapien. Amet consectetur adipiscing elit duis tristique sollicitudin. Amet est placerat in egestas erat. Id donec ultrices tincidunt arcu non sodales neque sodales ut. Amet venenatis urna cursus eget nunc scelerisque viverra. Faucibus purus in massa tempor nec feugiat. Lobortis mattis aliquam faucibus purus in massa tempor nec. Fames ac turpis egestas maecenas pharetra convallis. Elementum nisi quis eleifend quam. Feugiat scelerisque varius morbi enim nunc. Quisque id diam vel quam elementum pulvinar etiam non. Amet mattis vulputate enim nulla aliquet porttitor lacus. Sem nulla pharetra diam sit. Lectus urna duis convallis convallis tellus id interdum velit laoreet. Donec ultrices tincidunt arcu non sodales. Dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in.
+            img(src="https://www.culture.ru/storage/images/8ba9d7a028dfc838942957ef12f67936/8234d8564039f6a12306998f9f61eac5.jpg", alt="Image")
+          .gr-tabs-content__item
+            p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar sapien. Amet consectetur adipiscing elit duis tristique sollicitudin. Amet est placerat in egestas erat. Id donec ultrices tincidunt arcu non sodales neque sodales ut. Amet venenatis urna cursus eget nunc scelerisque viverra. Faucibus purus in massa tempor nec feugiat. Lobortis mattis aliquam faucibus purus in massa tempor nec. Fames ac turpis egestas maecenas pharetra convallis.
+          .gr-tabs-content__item
+            p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar sapien. Amet consectetur adipiscing elit duis tristique sollicitudin. Amet est placerat in egestas erat. Id donec ultrices tincidunt arcu non sodales neque sodales ut. Amet venenatis urna cursus eget nunc scelerisque viverra. Faucibus purus in massa tempor nec feugiat. Lobortis mattis aliquam faucibus purus in massa tempor nec. Fames ac turpis egestas maecenas pharetra convallis. Elementum nisi quis eleifend quam. Feugiat scelerisque varius morbi enim nunc. Quisque id diam vel quam elementum pulvinar etiam non. Amet mattis vulputate enim nulla aliquet porttitor lacus. Sem nulla pharetra diam sit. Lectus urna duis convallis convallis tellus id interdum velit laoreet.
+            iframe(width="560", height="315", src="https://www.youtube.com/embed/OiLdgNA6hlM", frameborder="0", allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture", allowfullscreen)
+          .gr-tabs-content__item
+            p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar sapien. Amet consectetur adipiscing elit duis tristique sollicitudin. Amet est placerat in egestas erat. Id donec ultrices tincidunt arcu non sodales neque sodales ut. Amet venenatis urna cursus eget nunc scelerisque viverra. Faucibus purus in massa tempor nec feugiat. Lobortis mattis aliquam faucibus purus in massa tempor nec. Fames ac turpis egestas maecenas pharetra convallis. Elementum nisi quis eleifend quam. Feugiat scelerisque varius morbi enim nunc. Quisque id diam vel quam elementum pulvinar etiam non. Amet mattis vulputate enim nulla aliquet porttitor lacus. Sem nulla pharetra diam sit. Lectus urna duis convallis convallis tellus id interdum velit laoreet. Donec ultrices tincidunt arcu non sodales. Dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in. Quisque sagittis purus sit amet volutpat. Amet cursus sit amet dictum sit amet justo donec enim. Congue quisque egestas diam in arcu cursus.
+            p Elit sed vulputate mi sit amet mauris commodo. Sed risus pretium quam vulputate dignissim. Eu non diam phasellus vestibulum lorem sed risus. Suspendisse sed nisi lacus sed viverra tellus in hac habitasse. Nisl suscipit adipiscing bibendum est ultricies integer. Amet commodo nulla facilisi nullam. Non tellus orci ac auctor augue mauris augue neque. Curabitur gravida arcu ac tortor dignissim convallis. Libero volutpat sed cras ornare. Cursus risus at ultrices mi tempus imperdiet. Arcu non sodales neque sodales ut etiam. Dolor purus non enim praesent. Tincidunt vitae semper quis lectus nulla at volutpat diam ut. Non odio euismod lacinia at quis risus sed vulputate odio. Ac odio tempor orci dapibus ultrices in.
+      .gr-accordion#gr-accordion(v-if="$route.params.engName === 'accordion'")
+        .gr-accordion-item
+          button.gr-accordion-item__title Текст 1
+          .gr-accordion-item__wrapper
+            .gr-accordion-item__content
+              p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar sapien. Amet consectetur adipiscing elit duis tristique sollicitudin. Amet est placerat in egestas erat. Id donec ultrices tincidunt arcu non sodales neque sodales ut. Amet venenatis urna cursus eget nunc scelerisque viverra. Faucibus purus in massa tempor nec feugiat. Lobortis mattis aliquam faucibus purus in massa tempor nec. Fames ac turpis egestas maecenas pharetra convallis. Elementum nisi quis eleifend quam. Feugiat scelerisque varius morbi enim nunc. Quisque id diam vel quam elementum pulvinar etiam non. Amet mattis vulputate enim nulla aliquet porttitor lacus. Sem nulla pharetra diam sit. Lectus urna duis convallis convallis tellus id interdum velit laoreet. Donec ultrices tincidunt arcu non sodales. Dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in. Quisque sagittis purus sit amet volutpat. Amet cursus sit amet dictum sit amet justo donec enim. Congue quisque egestas diam in arcu cursus.
+        .gr-accordion-item
+          button.gr-accordion-item__title Текст с картинкой
+          .gr-accordion-item__wrapper
+            .gr-accordion-item__content
+              p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar sapien. Amet consectetur adipiscing elit duis tristique sollicitudin. Amet est placerat in egestas erat. Id donec ultrices tincidunt arcu non sodales neque sodales ut. Amet venenatis urna cursus eget nunc scelerisque viverra. Faucibus purus in massa tempor nec feugiat. Lobortis mattis aliquam faucibus purus in massa tempor nec. Fames ac turpis egestas maecenas pharetra convallis. Elementum nisi quis eleifend quam. Feugiat scelerisque varius morbi enim nunc. Quisque id diam vel quam elementum pulvinar etiam non. Amet mattis vulputate enim nulla aliquet porttitor lacus. Sem nulla pharetra diam sit. Lectus urna duis convallis convallis tellus id interdum velit laoreet. Donec ultrices tincidunt arcu non sodales. Dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in.
+              img(src="https://www.culture.ru/storage/images/8ba9d7a028dfc838942957ef12f67936/8234d8564039f6a12306998f9f61eac5.jpg", alt="Image")
+        .gr-accordion-item
+          button.gr-accordion-item__title Текст 2
+          .gr-accordion-item__wrapper
+            .gr-accordion-item__content
+              p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar sapien. Amet consectetur adipiscing elit duis tristique sollicitudin. Amet est placerat in egestas erat. Id donec ultrices tincidunt arcu non sodales neque sodales ut. Amet venenatis urna cursus eget nunc scelerisque viverra. Faucibus purus in massa tempor nec feugiat. Lobortis mattis aliquam faucibus purus in massa tempor nec. Fames ac turpis egestas maecenas pharetra convallis.
+        .gr-accordion-item
+          button.gr-accordion-item__title Текст с видео
+          .gr-accordion-item__wrapper
+            .gr-accordion-item__content
+              p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar sapien. Amet consectetur adipiscing elit duis tristique sollicitudin. Amet est placerat in egestas erat. Id donec ultrices tincidunt arcu non sodales neque sodales ut. Amet venenatis urna cursus eget nunc scelerisque viverra. Faucibus purus in massa tempor nec feugiat. Lobortis mattis aliquam faucibus purus in massa tempor nec. Fames ac turpis egestas maecenas pharetra convallis. Elementum nisi quis eleifend quam. Feugiat scelerisque varius morbi enim nunc. Quisque id diam vel quam elementum pulvinar etiam non. Amet mattis vulputate enim nulla aliquet porttitor lacus. Sem nulla pharetra diam sit. Lectus urna duis convallis convallis tellus id interdum velit laoreet.
+              iframe(width="560", height="315", src="https://www.youtube.com/embed/OiLdgNA6hlM", frameborder="0", allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture", allowfullscreen)
+        .gr-accordion-item
+          button.gr-accordion-item__title Текст 3
+          .gr-accordion-item__wrapper
+            .gr-accordion-item__content
+              p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar sapien. Amet consectetur adipiscing elit duis tristique sollicitudin. Amet est placerat in egestas erat. Id donec ultrices tincidunt arcu non sodales neque sodales ut. Amet venenatis urna cursus eget nunc scelerisque viverra. Faucibus purus in massa tempor nec feugiat. Lobortis mattis aliquam faucibus purus in massa tempor nec. Fames ac turpis egestas maecenas pharetra convallis. Elementum nisi quis eleifend quam. Feugiat scelerisque varius morbi enim nunc. Quisque id diam vel quam elementum pulvinar etiam non. Amet mattis vulputate enim nulla aliquet porttitor lacus. Sem nulla pharetra diam sit. Lectus urna duis convallis convallis tellus id interdum velit laoreet. Donec ultrices tincidunt arcu non sodales. Dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in. Quisque sagittis purus sit amet volutpat. Amet cursus sit amet dictum sit amet justo donec enim. Congue quisque egestas diam in arcu cursus.
+              p Elit sed vulputate mi sit amet mauris commodo. Sed risus pretium quam vulputate dignissim. Eu non diam phasellus vestibulum lorem sed risus. Suspendisse sed nisi lacus sed viverra tellus in hac habitasse. Nisl suscipit adipiscing bibendum est ultricies integer. Amet commodo nulla facilisi nullam. Non tellus orci ac auctor augue mauris augue neque. Curabitur gravida arcu ac tortor dignissim convallis. Libero volutpat sed cras ornare. Cursus risus at ultrices mi tempus imperdiet. Arcu non sodales neque sodales ut etiam. Dolor purus non enim praesent. Tincidunt vitae semper quis lectus nulla at volutpat diam ut. Non odio euismod lacinia at quis risus sed vulputate odio. Ac odio tempor orci dapibus ultrices in.
     Footer
 </template>
 
@@ -68,6 +118,12 @@ import Footer from '@/components/Footer.vue'
 
 import '../assets/slider/GrSlider.styl'
 import { GrSlider } from '@/assets/slider/GrSlider.js'
+
+import '../assets/tabs/GrTabs.styl'
+import { GrTabs } from '@/assets/tabs/GrTabs.js'
+
+import '../assets/accordion/GrAccordion.styl'
+import { GrAccordion } from '@/assets/accordion/GrAccordion.js'
 
 export default {
   name: 'GrComponent',
@@ -187,6 +243,19 @@ export default {
       const grSlider = new GrSlider({
         arrowsEnabled: true,
         navigationEnabled: true
+      })
+    }
+    if (this.$route.params.engName === 'tabs') {
+      const grTabs = new GrTabs({
+        // layout: 'vertical'
+        layout: 'horizontal'
+      })
+    }
+    if (this.$route.params.engName === 'accordion') {
+      const grAccordion = new GrAccordion({
+        // isMultiple: false,
+        // defaultOpened: true,
+        defaultOpenedItems: [0]
       })
     }
   },
@@ -325,6 +394,24 @@ export default {
     display flex
     justify-content center
     align-items center
+  &-tabs
+    width 80%
+    p
+      margin-bottom 15px
+      &:last-child
+        margin-bottom 0
+    iframe
+      display block
+      margin 0 auto
+  &-accordion
+    width 80%
+    p
+      margin-bottom 15px
+      &:last-child
+        margin-bottom 0
+    iframe
+      display block
+      margin 0 auto
 .gr-slider-arrow
   width 100px
   height 100px

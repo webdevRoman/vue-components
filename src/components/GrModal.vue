@@ -6,7 +6,7 @@
       button.gr-modal-window__close(@click="closeModal") &times;
       .gr-modal-window__title(v-if="grModalConfig.title") {{ grModalConfig.title }}
       .gr-modal-window__text(v-if="grModalConfig.text") {{ grModalConfig.text }}
-      input.gr-modal-window__input(type="text", v-if="grModalConfig.inputEnabled", v-model="modalInput")
+      input.gr-modal-window__input(type="text", placeholder="Введите текст", v-if="grModalConfig.inputEnabled", v-model="modalInput")
       .gr-modal-window__confirmation(v-if="grModalConfig.confirmEnabled || grModalConfig.inputEnabled")
         button.gr-modal-window__btn.gr-modal-window__btn--close(@click="closeModal") Отмена
         button.gr-modal-window__btn.gr-modal-window__btn--confirm(@click="confirmModal") Подтвердить
@@ -55,7 +55,7 @@ export default {
 .gr
   &-modal
     &__btn
-      width 150px
+      width 200px
       padding 10px
       background-color $cBgDark
       font-family $font
@@ -64,7 +64,7 @@ export default {
       text-transform uppercase
       transition 0.2s
       &:hover
-        width 170px
+        width 220px
         color $cActive
     &-overlay
       position: fixed

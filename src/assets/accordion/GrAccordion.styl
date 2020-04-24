@@ -1,0 +1,33 @@
+@import '../styles/vars'
+
+.gr
+  &-accordion
+    &-item
+      border: 2px solid $cBgDark
+      border-bottom none
+      font-family: $font
+      &:last-child
+        border-bottom: 2px solid $cBgDark
+      &__title
+        width 100%
+        padding 10px 20px
+        // border-bottom: 2px solid $cBgDark
+        font-size 22px
+        font-weight bold
+        text-transform uppercase
+        text-align-last left
+        transition 0.2s
+        &:hover
+          background-color: rgba($cBgMiddle, .2)
+      &__wrapper
+        overflow hidden
+      &__content
+        padding 10px 20px
+        border-top: 2px solid $cBgDark
+        // transform-origin: center top
+        // transform scaleY(0)
+        margin-top -100%
+        transition 0.2s
+        &_active
+          // transform: scaleY(1)
+          margin-top 0

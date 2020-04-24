@@ -1,0 +1,53 @@
+@import '../styles/vars'
+
+.gr
+  &-tabs
+    display: flex
+    justify-content: space-between
+    &-nav
+      flex-basis: 25%
+      &__item
+        width: 95%
+        padding: 10px
+        background-color: $cBgDark
+        border-top: 1px solid $cActive
+        border-bottom: 1px solid $cActive
+        font-family: $font
+        font-weight: bold
+        text-align: left
+        color: $cFontLight
+        text-transform: uppercase
+        transition: .2s
+        &_active
+          width: 100%
+          color: $cActive
+        &:hover
+          width: 100%
+          color: $cActive
+    &-content
+      flex-basis: 70%
+      line-height: 1.5
+      &__item
+        opacity: 0
+        transition: .2s
+        &_active
+          opacity 1
+    &_vertical
+      flex-direction: column
+      .gr
+        &-tabs
+          &-nav
+            display flex
+            align-items center
+            flex-wrap: wrap
+            margin-bottom 50px
+            &__item
+              width auto
+              padding 10px 20px
+              border: none
+              border-left: 1px solid $cActive
+              border-right: 1px solid $cActive
+              &_active
+                width: auto
+              &:hover
+                width: auto
