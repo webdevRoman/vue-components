@@ -104,9 +104,20 @@
             .gr-accordion-item__content
               p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar sapien. Amet consectetur adipiscing elit duis tristique sollicitudin. Amet est placerat in egestas erat. Id donec ultrices tincidunt arcu non sodales neque sodales ut. Amet venenatis urna cursus eget nunc scelerisque viverra. Faucibus purus in massa tempor nec feugiat. Lobortis mattis aliquam faucibus purus in massa tempor nec. Fames ac turpis egestas maecenas pharetra convallis. Elementum nisi quis eleifend quam. Feugiat scelerisque varius morbi enim nunc. Quisque id diam vel quam elementum pulvinar etiam non. Amet mattis vulputate enim nulla aliquet porttitor lacus. Sem nulla pharetra diam sit. Lectus urna duis convallis convallis tellus id interdum velit laoreet. Donec ultrices tincidunt arcu non sodales. Dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in. Quisque sagittis purus sit amet volutpat. Amet cursus sit amet dictum sit amet justo donec enim. Congue quisque egestas diam in arcu cursus.
               p Elit sed vulputate mi sit amet mauris commodo. Sed risus pretium quam vulputate dignissim. Eu non diam phasellus vestibulum lorem sed risus. Suspendisse sed nisi lacus sed viverra tellus in hac habitasse. Nisl suscipit adipiscing bibendum est ultricies integer. Amet commodo nulla facilisi nullam. Non tellus orci ac auctor augue mauris augue neque. Curabitur gravida arcu ac tortor dignissim convallis. Libero volutpat sed cras ornare. Cursus risus at ultrices mi tempus imperdiet. Arcu non sodales neque sodales ut etiam. Dolor purus non enim praesent. Tincidunt vitae semper quis lectus nulla at volutpat diam ut. Non odio euismod lacinia at quis risus sed vulputate odio. Ac odio tempor orci dapibus ultrices in.
-      .gr-preloader-wrapper
+      .gr-preloader-wrapper(v-if="$route.params.engName === 'preloader'")
         button.gr-preloader-button(@click="showPreloader") Показать анимацию загрузки
-        .gr-preloader#gr-preloader(v-if="$route.params.engName === 'preloader'")
+        .gr-preloader#gr-preloader
+      .gr-notification-wrapper(v-if="$route.params.engName === 'notification'")
+        button.gr-notification-button(@click="showNotification('info')") Показать информационное уведомление
+        GrNotification#gr-notification-info(:gr-notification-config="notificationInfoConfig")
+        button.gr-notification-button(@click="showNotification('success')") Показать уведомление успеха
+        GrNotification#gr-notification-success(:gr-notification-config="notificationSuccessConfig")
+        button.gr-notification-button(@click="showNotification('error')") Показать уведомление ошибки
+        GrNotification#gr-notification-error(:gr-notification-config="notificationErrorConfig")
+      .gr-drawer-wrapper(v-if="$route.params.engName === 'drawer'")
+        GrDrawer.gr-drawer#gr-drawer(:gr-drawer-config="drawerConfig")
+        p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar sapien. Amet consectetur adipiscing elit duis tristique sollicitudin. Amet est placerat in egestas erat. Id donec ultrices tincidunt arcu non sodales neque sodales ut. Amet venenatis urna cursus eget nunc scelerisque viverra. Faucibus purus in massa tempor nec feugiat. Lobortis mattis aliquam faucibus purus in massa tempor nec. Fames ac turpis egestas maecenas pharetra convallis. Elementum nisi quis eleifend quam. Feugiat scelerisque varius morbi enim nunc. Quisque id diam vel quam elementum pulvinar etiam non. Amet mattis vulputate enim nulla aliquet porttitor lacus. Sem nulla pharetra diam sit. Lectus urna duis convallis convallis tellus id interdum velit laoreet. Donec ultrices tincidunt arcu non sodales. Dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in. Quisque sagittis purus sit amet volutpat. Amet cursus sit amet dictum sit amet justo donec enim. Congue quisque egestas diam in arcu cursus.
+        p Elit sed vulputate mi sit amet mauris commodo. Sed risus pretium quam vulputate dignissim. Eu non diam phasellus vestibulum lorem sed risus. Suspendisse sed nisi lacus sed viverra tellus in hac habitasse. Nisl suscipit adipiscing bibendum est ultricies integer. Amet commodo nulla facilisi nullam. Non tellus orci ac auctor augue mauris augue neque. Curabitur gravida arcu ac tortor dignissim convallis. Libero volutpat sed cras ornare. Cursus risus at ultrices mi tempus imperdiet. Arcu non sodales neque sodales ut etiam. Dolor purus non enim praesent. Tincidunt vitae semper quis lectus nulla at volutpat diam ut. Non odio euismod lacinia at quis risus sed vulputate odio. Ac odio tempor orci dapibus ultrices in.
     Footer
 </template>
 
@@ -117,6 +128,8 @@ import GrRadiobuttons from '@/components/GrRadiobuttons.vue'
 import GrMenu from '@/components/GrMenu.vue'
 import GrModal from '@/components/GrModal.vue'
 import GrSelect from '@/components/GrSelect.vue'
+import GrNotification from '@/components/GrNotification.vue'
+import GrDrawer from '@/components/GrDrawer.vue'
 import Footer from '@/components/Footer.vue'
 
 import '../assets/slider/GrSlider.styl'
@@ -140,6 +153,8 @@ export default {
     GrMenu,
     GrModal,
     GrSelect,
+    GrNotification,
+    GrDrawer,
     Footer
   },
   data() {
@@ -242,13 +257,82 @@ export default {
         maxItemQuantity: 15
       },
       selectItemsMultiple: [],
-      preloader: null
+      preloader: null,
+      notificationInfoConfig: {
+        type: 'info',
+        title: 'Информация',
+        message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+      },
+      notificationSuccessConfig: {
+        type: 'success',
+        title: 'Успех',
+        message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+      },
+      notificationErrorConfig: {
+        type: 'error',
+        title: 'Ошибка',
+        message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+      },
+      drawerConfig: {
+        title: 'Выдвижное меню',
+        items: [{
+          link: {
+            path: '/component',
+            params: ['drawer'],
+            query: { name: 'выдвижная панель', ind: '1' }
+          },
+          title: 'Главная'
+        }, {
+          link: {
+            path: '/component',
+            params: ['drawer'],
+            query: { name: 'выдвижная панель', ind: '2' }
+          },
+          title: 'О нас'
+        }, {
+          link: {
+            path: '/component',
+            params: ['drawer'],
+            query: { name: 'выдвижная панель', ind: '3' }
+          },
+          title: 'Портфолио'
+        }, {
+          link: {
+            path: '/component',
+            params: ['drawer'],
+            query: { name: 'выдвижная панель', ind: '4' }
+          },
+          title: 'Блог'
+        }, {
+          link: {
+            path: '/component',
+            params: ['drawer'],
+            query: { name: 'выдвижная панель', ind: '5' }
+          },
+          title: 'Контакты'
+        }]
+      }
     }
   },
   methods: {
     showPreloader() {
       this.preloader.showPreloader()
       setTimeout(() => { this.preloader.hidePreloader() }, 5000)
+    },
+    showNotification(type) {
+      let notification
+      if (type === 'info')
+        notification = document.getElementById('gr-notification-info')
+      else if (type === 'success')
+        notification = document.getElementById('gr-notification-success')
+      else if (type === 'error')
+        notification = document.getElementById('gr-notification-error')
+      notification.style.display = 'block'
+      setTimeout(() => { notification.style.opacity = '1' }, 10)
+      setTimeout(() => {
+        notification.style.opacity = '0'
+        setTimeout(() => { notification.style.display = 'none' }, 200)
+      }, 5000)
     }
   },
   mounted() {
@@ -373,8 +457,6 @@ export default {
     align-items: center
     padding: 100px 0
 
-// @import '../assets/slider/GrSlider'
-
 .gr
   &-slider
     &-item
@@ -440,6 +522,38 @@ export default {
       &:hover
         padding 10px 30px
         color $cActive
+  &-notification
+    &-wrapper
+      display flex
+      justify-content center
+      align-items center
+      flex-direction column
+    &-button
+      padding 10px
+      width 490px
+      background-color $cBgDark
+      font-family $font
+      font-weight bold
+      color $cFontLight
+      text-transform uppercase
+      margin 0 auto 20px auto
+      transition 0.2s
+      &:last-child
+        margin-bottom 0
+      &:hover
+        width 510px
+        color $cActive
+  &-drawer
+    margin-bottom 20px
+    &-wrapper
+      width 80%
+      padding 20px 30px
+      box-shadow: 0 0 20px rgba(0, 0, 0, .3)
+      p
+        line-height 1.5
+        margin-bottom 15px
+        &:last-child
+          margin-bottom 0
 .gr-slider-arrow
   width 100px
   height 100px

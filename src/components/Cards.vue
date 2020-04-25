@@ -52,6 +52,14 @@ export default {
         name: 'анимация загрузки',
         shortName: 'анимация загрузки',
         engName: 'preloader',
+      }, {
+        name: 'уведомление',
+        shortName: 'уведомление',
+        engName: 'notification',
+      }, {
+        name: 'выдвижная панель',
+        shortName: 'выдвиж. панель',
+        engName: 'drawer',
       }]
     }
   },
