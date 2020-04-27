@@ -3,10 +3,10 @@
     header.header(:class="`header-${$route.query.ind}`")
       .header__text
         h2.header__title {{ $route.query.name }}
-        .header__subtitle {{ $route.params.engName }}
+        .header__subtitle {{ $route.query.engName }}
     .component-section
-      GrCalendar#calendar(v-if="$route.params.engName === 'calendar'", :gr-calendar-config="calendarConfig", v-model="calendarDate")
-      .gr-slider-wrapper#gr-slider-wrapper(v-if="$route.params.engName === 'slider'")
+      GrCalendar#calendar(v-if="$route.query.engName === 'calendar'", :gr-calendar-config="calendarConfig", v-model="calendarDate")
+      .gr-slider-wrapper#gr-slider-wrapper(v-if="$route.query.engName === 'slider'")
         .gr-slider-container#gr-slider-container
           .gr-slider-item
             .gr-slider-item__wrapper
@@ -43,18 +43,18 @@
               .gr-slider-item__img
                 img(src="../assets/img/slider/cat.jpg", alt="Image")
               .gr-slider-item__title Кот
-      GrCheckboxes(v-if="$route.params.engName === 'checkboxes'", :gr-checkboxes-config="checkboxesConfig", v-model="chosenCheckboxes")
-      GrRadiobuttons(v-if="$route.params.engName === 'radiobuttons'", :gr-radiobuttons-config="radiobuttonsConfig", v-model="chosenRadiobutton")
-      GrMenu(v-if="$route.params.engName === 'menu'", :gr-menu-config="menuConfig")
-      .gr-modals(v-if="$route.params.engName === 'modal'")
+      GrCheckboxes(v-if="$route.query.engName === 'checkboxes'", :gr-checkboxes-config="checkboxesConfig", v-model="chosenCheckboxes")
+      GrRadiobuttons(v-if="$route.query.engName === 'radiobuttons'", :gr-radiobuttons-config="radiobuttonsConfig", v-model="chosenRadiobutton")
+      GrMenu(v-if="$route.query.engName === 'menu'", :gr-menu-config="menuConfig")
+      .gr-modals(v-if="$route.query.engName === 'modal'")
         GrModal#modal-alert(:gr-modal-config="modalAlertConfig")
         GrModal#modal-confirm(:gr-modal-config="modalConfirmConfig", v-model="modalConfirmed")
         GrModal#modal-input(:gr-modal-config="modalInputConfig", v-model="modalInput")
-      .gr-selects(v-if="$route.params.engName === 'select'")
+      .gr-selects(v-if="$route.query.engName === 'select'")
         GrSelect#select-single(:gr-select-config="selectSingleConfig", v-model="selectSingle")
         GrSelect#select-multiple(:gr-select-config="selectMultipleConfig", v-model="selectMultiple")
         GrSelect#select-items-multiple(:gr-select-config="selectItemsMultipleConfig", v-model="selectItemsMultiple")
-      .gr-tabs#gr-tabs(v-if="$route.params.engName === 'tabs'")
+      .gr-tabs#gr-tabs(v-if="$route.query.engName === 'tabs'")
         .gr-tabs-nav
           button.gr-tabs-nav__item Текст 1
           button.gr-tabs-nav__item Текст с картинкой
@@ -75,7 +75,7 @@
           .gr-tabs-content__item
             p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar sapien. Amet consectetur adipiscing elit duis tristique sollicitudin. Amet est placerat in egestas erat. Id donec ultrices tincidunt arcu non sodales neque sodales ut. Amet venenatis urna cursus eget nunc scelerisque viverra. Faucibus purus in massa tempor nec feugiat. Lobortis mattis aliquam faucibus purus in massa tempor nec. Fames ac turpis egestas maecenas pharetra convallis. Elementum nisi quis eleifend quam. Feugiat scelerisque varius morbi enim nunc. Quisque id diam vel quam elementum pulvinar etiam non. Amet mattis vulputate enim nulla aliquet porttitor lacus. Sem nulla pharetra diam sit. Lectus urna duis convallis convallis tellus id interdum velit laoreet. Donec ultrices tincidunt arcu non sodales. Dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in. Quisque sagittis purus sit amet volutpat. Amet cursus sit amet dictum sit amet justo donec enim. Congue quisque egestas diam in arcu cursus.
             p Elit sed vulputate mi sit amet mauris commodo. Sed risus pretium quam vulputate dignissim. Eu non diam phasellus vestibulum lorem sed risus. Suspendisse sed nisi lacus sed viverra tellus in hac habitasse. Nisl suscipit adipiscing bibendum est ultricies integer. Amet commodo nulla facilisi nullam. Non tellus orci ac auctor augue mauris augue neque. Curabitur gravida arcu ac tortor dignissim convallis. Libero volutpat sed cras ornare. Cursus risus at ultrices mi tempus imperdiet. Arcu non sodales neque sodales ut etiam. Dolor purus non enim praesent. Tincidunt vitae semper quis lectus nulla at volutpat diam ut. Non odio euismod lacinia at quis risus sed vulputate odio. Ac odio tempor orci dapibus ultrices in.
-      .gr-accordion#gr-accordion(v-if="$route.params.engName === 'accordion'")
+      .gr-accordion#gr-accordion(v-if="$route.query.engName === 'accordion'")
         .gr-accordion-item
           button.gr-accordion-item__title Текст 1
           .gr-accordion-item__wrapper
@@ -104,17 +104,17 @@
             .gr-accordion-item__content
               p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar sapien. Amet consectetur adipiscing elit duis tristique sollicitudin. Amet est placerat in egestas erat. Id donec ultrices tincidunt arcu non sodales neque sodales ut. Amet venenatis urna cursus eget nunc scelerisque viverra. Faucibus purus in massa tempor nec feugiat. Lobortis mattis aliquam faucibus purus in massa tempor nec. Fames ac turpis egestas maecenas pharetra convallis. Elementum nisi quis eleifend quam. Feugiat scelerisque varius morbi enim nunc. Quisque id diam vel quam elementum pulvinar etiam non. Amet mattis vulputate enim nulla aliquet porttitor lacus. Sem nulla pharetra diam sit. Lectus urna duis convallis convallis tellus id interdum velit laoreet. Donec ultrices tincidunt arcu non sodales. Dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in. Quisque sagittis purus sit amet volutpat. Amet cursus sit amet dictum sit amet justo donec enim. Congue quisque egestas diam in arcu cursus.
               p Elit sed vulputate mi sit amet mauris commodo. Sed risus pretium quam vulputate dignissim. Eu non diam phasellus vestibulum lorem sed risus. Suspendisse sed nisi lacus sed viverra tellus in hac habitasse. Nisl suscipit adipiscing bibendum est ultricies integer. Amet commodo nulla facilisi nullam. Non tellus orci ac auctor augue mauris augue neque. Curabitur gravida arcu ac tortor dignissim convallis. Libero volutpat sed cras ornare. Cursus risus at ultrices mi tempus imperdiet. Arcu non sodales neque sodales ut etiam. Dolor purus non enim praesent. Tincidunt vitae semper quis lectus nulla at volutpat diam ut. Non odio euismod lacinia at quis risus sed vulputate odio. Ac odio tempor orci dapibus ultrices in.
-      .gr-preloader-wrapper(v-if="$route.params.engName === 'preloader'")
+      .gr-preloader-wrapper(v-if="$route.query.engName === 'preloader'")
         button.gr-preloader-button(@click="showPreloader") Показать анимацию загрузки
         .gr-preloader#gr-preloader
-      .gr-notification-wrapper(v-if="$route.params.engName === 'notification'")
+      .gr-notification-wrapper(v-if="$route.query.engName === 'notification'")
         button.gr-notification-button(@click="showNotification('info')") Показать информационное уведомление
         GrNotification#gr-notification-info(:gr-notification-config="notificationInfoConfig")
         button.gr-notification-button(@click="showNotification('success')") Показать уведомление успеха
         GrNotification#gr-notification-success(:gr-notification-config="notificationSuccessConfig")
         button.gr-notification-button(@click="showNotification('error')") Показать уведомление ошибки
         GrNotification#gr-notification-error(:gr-notification-config="notificationErrorConfig")
-      .gr-drawer-wrapper(v-if="$route.params.engName === 'drawer'")
+      .gr-drawer-wrapper(v-if="$route.query.engName === 'drawer'")
         GrDrawer.gr-drawer#gr-drawer(:gr-drawer-config="drawerConfig")
         p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar sapien. Amet consectetur adipiscing elit duis tristique sollicitudin. Amet est placerat in egestas erat. Id donec ultrices tincidunt arcu non sodales neque sodales ut. Amet venenatis urna cursus eget nunc scelerisque viverra. Faucibus purus in massa tempor nec feugiat. Lobortis mattis aliquam faucibus purus in massa tempor nec. Fames ac turpis egestas maecenas pharetra convallis. Elementum nisi quis eleifend quam. Feugiat scelerisque varius morbi enim nunc. Quisque id diam vel quam elementum pulvinar etiam non. Amet mattis vulputate enim nulla aliquet porttitor lacus. Sem nulla pharetra diam sit. Lectus urna duis convallis convallis tellus id interdum velit laoreet. Donec ultrices tincidunt arcu non sodales. Dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in. Quisque sagittis purus sit amet volutpat. Amet cursus sit amet dictum sit amet justo donec enim. Congue quisque egestas diam in arcu cursus.
         p Elit sed vulputate mi sit amet mauris commodo. Sed risus pretium quam vulputate dignissim. Eu non diam phasellus vestibulum lorem sed risus. Suspendisse sed nisi lacus sed viverra tellus in hac habitasse. Nisl suscipit adipiscing bibendum est ultricies integer. Amet commodo nulla facilisi nullam. Non tellus orci ac auctor augue mauris augue neque. Curabitur gravida arcu ac tortor dignissim convallis. Libero volutpat sed cras ornare. Cursus risus at ultrices mi tempus imperdiet. Arcu non sodales neque sodales ut etiam. Dolor purus non enim praesent. Tincidunt vitae semper quis lectus nulla at volutpat diam ut. Non odio euismod lacinia at quis risus sed vulputate odio. Ac odio tempor orci dapibus ultrices in.
@@ -187,36 +187,31 @@ export default {
         items: [{
           link: {
             path: '/component',
-            params: ['menu'],
-            query: { name: 'меню', ind: '1' }
+            query: { engName: 'menu', name: 'меню', ind: '1' }
           },
           title: 'Главная'
         }, {
           link: {
             path: '/component',
-            params: ['menu'],
-            query: { name: 'меню', ind: '2' }
+            query: { engName: 'menu', name: 'меню', ind: '2' }
           },
           title: 'О нас'
         }, {
           link: {
             path: '/component',
-            params: ['menu'],
-            query: { name: 'меню', ind: '3' }
+            query: { engName: 'menu', name: 'меню', ind: '3' }
           },
           title: 'Портфолио'
         }, {
           link: {
             path: '/component',
-            params: ['menu'],
-            query: { name: 'меню', ind: '4' }
+            query: { engName: 'menu', name: 'меню', ind: '4' }
           },
           title: 'Блог'
         }, {
           link: {
             path: '/component',
-            params: ['menu'],
-            query: { name: 'меню', ind: '5' }
+            query: { engName: 'menu', name: 'меню', ind: '5' }
           },
           title: 'Контакты'
         }]
@@ -278,36 +273,31 @@ export default {
         items: [{
           link: {
             path: '/component',
-            params: ['drawer'],
-            query: { name: 'выдвижная панель', ind: '1' }
+            query: { engName: 'drawer', name: 'выдвижная панель', ind: '1' }
           },
           title: 'Главная'
         }, {
           link: {
             path: '/component',
-            params: ['drawer'],
-            query: { name: 'выдвижная панель', ind: '2' }
+            query: { engName: 'drawer', name: 'выдвижная панель', ind: '2' }
           },
           title: 'О нас'
         }, {
           link: {
             path: '/component',
-            params: ['drawer'],
-            query: { name: 'выдвижная панель', ind: '3' }
+            query: { engName: 'drawer', name: 'выдвижная панель', ind: '3' }
           },
           title: 'Портфолио'
         }, {
           link: {
             path: '/component',
-            params: ['drawer'],
-            query: { name: 'выдвижная панель', ind: '4' }
+            query: { engName: 'drawer', name: 'выдвижная панель', ind: '4' }
           },
           title: 'Блог'
         }, {
           link: {
             path: '/component',
-            params: ['drawer'],
-            query: { name: 'выдвижная панель', ind: '5' }
+            query: { engName: 'drawer', name: 'выдвижная панель', ind: '5' }
           },
           title: 'Контакты'
         }]
@@ -336,56 +326,29 @@ export default {
     }
   },
   mounted() {
-    if (this.$route.params.engName === 'slider') {
+    if (this.$route.query.engName === 'slider') {
       const grSlider = new GrSlider({
         arrowsEnabled: true,
         navigationEnabled: true
       })
     }
-    if (this.$route.params.engName === 'tabs') {
+    if (this.$route.query.engName === 'tabs') {
       const grTabs = new GrTabs({
         // layout: 'vertical'
         layout: 'horizontal'
       })
     }
-    if (this.$route.params.engName === 'accordion') {
+    if (this.$route.query.engName === 'accordion') {
       const grAccordion = new GrAccordion({
         // isMultiple: false,
         // defaultOpened: true,
         defaultOpenedItems: [0]
       })
     }
-    if (this.$route.params.engName === 'preloader') {
+    if (this.$route.query.engName === 'preloader') {
       this.preloader = new GrPreloader()
     }
-  },
-  // watch: {
-    // chosenRadiobutton(val) {
-    //   console.log(val)
-    // },
-    // chosenCheckboxes(val) {
-    //   console.log(val)
-    // }
-    // '$route.query.ind'(val) {
-    //   console.log(this.$route)
-    //   this.$router.push({ path: this.$route.path, query: this.$route.query })
-    // }
-    // modalConfirmed(val) {
-    //   console.log(val)
-    // }
-    // modalInput(val) {
-    //   console.log(val)
-    // }
-    // selectSingle(val) {
-    //   console.log(val)
-    // }
-    // selectMultiple(val) {
-    //   console.log(val)
-    // }
-    // selectItemsMultiple(val) {
-    //   console.log(val)
-    // }
-  // }
+  }
 }
 </script>
 

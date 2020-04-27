@@ -1,6 +1,6 @@
 <template lang="pug">
 .container.cards-container
-  router-link.card(:to="{ path: `/component/${card.engName}`, query: { name: card.name, ind: imgNumbers[i] }}", v-for="(card, i) in cards", :key="card.engName")
+  router-link.card(:to="{ path: '/component', query: { engName: card.engName, name: card.name, ind: imgNumbers[i] }}", v-for="(card, i) in cards", :key="card.engName")
     .card-item(:class="`card-item-${imgNumbers[i]}`")
       .card__text
         .subtitle.card__title {{ card.shortName }}
@@ -93,8 +93,6 @@ function rotate(event) {
   const rect = cardItem.getBoundingClientRect(),
     scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
     scrollTop = window.pageYOffset || document.documentElement.scrollTop
-  // if (event.target.classList.contains('card-item'))
-  // cardItem.style.transform = `rotateX(${-(event.offsetY - halfWidth) / 15}deg) rotateY(${(event.offsetX - halfHeight) / 15}deg)`
   cardItem.style.transform = `rotateX(${-(event.pageY - rect.top - scrollTop - halfWidth) / 15}deg) rotateY(${(event.pageX - rect.left - scrollLeft - halfHeight) / 15}deg)`
 }
 function stopRotate(event) {

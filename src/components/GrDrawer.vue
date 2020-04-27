@@ -18,7 +18,6 @@ export default {
   },
   methods: {
     toggleMenu() {
-      console.log('toggle')
       const drawer = document.getElementById(this.$attrs.id)
       const button = drawer.querySelector('.gr-drawer__btn')
       const menu = drawer.querySelector('.gr-drawer__menu')
@@ -29,15 +28,12 @@ export default {
   created() {
     for (let i = 0; i < this.grDrawerConfig.items.length; i++) {
       const itemLink = this.grDrawerConfig.items[i].link
-      let linkStr = itemLink.path
-      for (let j = 0; j < itemLink.params.length; j++)
-        linkStr += '/' + itemLink.params[j]
       this.links.push({
         id: i,
-        path: linkStr,
+        path: itemLink.path,
         query: itemLink.query,
         title: this.grDrawerConfig.items[i].title,
-        isActive: this.$route.path === linkStr && JSON.stringify(this.$route.query) === JSON.stringify(itemLink.query)
+        isActive: this.$route.path === itemLink.path && JSON.stringify(this.$route.query) === JSON.stringify(itemLink.query)
       })
     }
   },

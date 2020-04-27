@@ -11,19 +11,25 @@ Vue.use(VueRouter)
     component: Home
   },
   {
-    path: '/component/:engName',
+    path: '/component',
     name: 'Component',
     // props: true,
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/Component.vue')
+  },
+  {
+    path: '*',
+    name: '404',
+    component: Home
   }
 ]
 
 const router = new VueRouter({
   mode: 'history',
-  base: process.env.BASE_URL,
+  // base: process.env.BASE_URL,
+  base: 'wp-content/themes/webdev/portfolio-works/vue-components' + process.env.BASE_URL,
   routes
 })
 
