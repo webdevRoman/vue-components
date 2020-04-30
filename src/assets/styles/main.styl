@@ -56,7 +56,15 @@ body
 .title
   font-size: 48px
   font-weight: bold
+  @media screen and (max-width: $wXL)
+    font-size 36px
+  @media screen and (max-width: $wS)
+    font-size 24px
 
 .text
   font-size: 18px
   line-height: 1.5
+  @media screen and (max-width: $wXL)
+    font-size: 16px
+  @media screen and (max-width: $wS)
+    font-size: 14px

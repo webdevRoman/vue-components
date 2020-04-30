@@ -72,12 +72,14 @@ export default {
     }
   },
   mounted() {
-    const cards = document.querySelectorAll('.card')
-    cards.forEach(card => {
-      card.addEventListener('mouseenter', setTransition)
-      card.addEventListener('mousemove', rotate)
-      card.addEventListener('mouseout', stopRotate)
-    })
+    if (screen.width > 992) {
+      const cards = document.querySelectorAll('.card')
+      cards.forEach(card => {
+        card.addEventListener('mouseenter', setTransition)
+        card.addEventListener('mousemove', rotate)
+        card.addEventListener('mouseout', stopRotate)
+      })
+    }
   }
 }
 
@@ -115,12 +117,29 @@ function stopRotate(event) {
   &-container
     margin-top: 300px
     margin-bottom: 110px
+    @media screen and (max-width: $wXL)
+      margin-top 170px
+      margin-bottom 50px
+    @media screen and (max-width: $wS)
+      flex-direction column
+      align-items center
+      margin-top 120px
+      margin-bottom 20px
 
 .card
   margin-right: 128px
   margin-bottom: 90px
   perspective: 1000px
   transform-style: preserve-3d
+  @media screen and (max-width: $wXL)
+    margin-right: $wColL + 2 * $wGap
+    margin-bottom 70px
+  @media screen and (max-width: $wL)
+    margin-right: $wColM + 2 * $wGap
+  @media screen and (max-width: $wM)
+    margin-right: $wColS + 2 * $wGap
+  @media screen and (max-width: $wS)
+    margin-right: 0
   &-item
     position: relative
     width: 264px
@@ -129,6 +148,17 @@ function stopRotate(event) {
     background-repeat: no-repeat
     background-size: cover
     box-shadow: 0 0 20px rgba(0, 0, 0, .3)
+    @media screen and (max-width: $wXL)
+      width: 3 * ($wColL + $wGap) - $wGap
+      height: 3 * ($wColL + $wGap) - $wGap
+    @media screen and (max-width: $wL)
+      width: 5 * ($wColM + $wGap) - $wGap
+      height: 5 * ($wColM + $wGap) - $wGap
+    @media screen and (max-width: $wM)
+      width: 5 * ($wColS + $wGap) - $wGap
+      height: 5 * ($wColS + $wGap) - $wGap
+    @media screen and (max-width: $wS)
+      height: 3 * ($wColS + $wGap) - $wGap
     &:before, &:after
       content: ''
       display: block
@@ -141,11 +171,21 @@ function stopRotate(event) {
       width: 10px
       height: 95px
       z-index: 5
+      @media screen and (max-width: $wS)
+        top -15px
     &:after
       bottom: 45px
       left: -15px
       width: 100px
       height: 32px
+      @media screen and (max-width: $wXL)
+        height 24px
+      @media screen and (max-width: $wL)
+        bottom: 42px
+        left: -10px
+      @media screen and (max-width: $wS)
+        width 125%
+        background-color: $cBgMiddle
     &-1
       background-image: url('../assets/img/bg1.jpg')
     &-2
@@ -158,6 +198,13 @@ function stopRotate(event) {
       background-image: url('../assets/img/bg5.jpg')
   &:nth-child(3n)
     margin-right: 0
+    @media screen and (max-width: $wL)
+      margin-right: $wColM + 2 * $wGap
+    @media screen and (max-width: $wS)
+      margin-right 0
+  &:nth-child(2n)
+    @media screen and (max-width: $wL)
+      margin-right 0
   &__text
     position: absolute
     bottom: 20px
@@ -170,6 +217,10 @@ function stopRotate(event) {
     text-align: right
     margin-bottom: 10px
     transition: .2s
+    @media screen and (max-width: $wXL)
+      font-size 20px
+    @media screen and (max-width: $wS)
+      color: $cFontLight
   &__subtitle
     font-size: 14px
     letter-spacing: .25em
@@ -177,16 +228,29 @@ function stopRotate(event) {
     text-align: left
     margin-right: -10px
     transition: .2s
+    @media screen and (max-width: $wXL)
+      font-size 12px
   &:hover
     .card-item
       &:before
         top: 180px
+        @media screen and (max-width: $wXL)
+          top: 140px
+        @media screen and (max-width: $wL)
+          top: -20px
       &:after
-        width: 343px
+        width 125%
         background-color: $cBgMiddle
+        @media screen and (max-width: $wL)
+          width 100px
+          background-color: $cActive
       .card
         &__title
           color: $cFontLight
+          @media screen and (max-width: $wL)
+            color #000
         &__subtitle
           color: $cBgMiddle
+          @media screen and (max-width: $wL)
+            color #000
 </style>

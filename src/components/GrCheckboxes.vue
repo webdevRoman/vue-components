@@ -62,35 +62,35 @@ export default {
 
 .gr
   &-checkboxes
-    min-width 400px
-    padding 20px 40px
+    min-width: 400px
+    padding: 20px 40px
     box-shadow: 0 0 20px rgba(0, 0, 0, .3)
   &-checkbox
-    display flex
-    align-items center
-    margin-bottom 20px
+    display: flex
+    align-items: center
+    margin-bottom: 20px
     &:last-child
-      margin-bottom 0
+      margin-bottom: 0
     &:hover
       .gr-checkbox__box
-        background-color rgba($cBgMiddle, 0.2)
+        background-color: rgba($cBgMiddle, .2)
     &__box
-      position relative
-      width 30px
-      height 30px
-      border 2px solid $cBgDark
-      margin-right 20px
-      transition 0.2s
+      position: relative
+      width: 30px
+      height: 30px
+      border: 2px solid $cBgDark
+      margin-right: 20px
+      transition: .2s
     &__tick
-      position absolute
-      top -5%
-      left 10%
-      width 30px
-      height 15px
-      border-bottom 2px solid $cActive
-      border-left 2px solid $cActive
-      transform rotate(-45deg)
+      position: absolute
+      top: -5%
+      left: 10%
+      width: 30px
+      height: 15px
+      border-bottom: 2px solid $cActive
+      border-left: 2px solid $cActive
+      transform: rotate(-45deg)
     &__value
-      font-family $font
-      font-size 20px
+      font-family: $font
+      font-size: 20px
 </style>
