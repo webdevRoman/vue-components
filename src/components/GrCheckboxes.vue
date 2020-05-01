@@ -65,15 +65,23 @@ export default {
     min-width: 400px
     padding: 20px 40px
     box-shadow: 0 0 20px rgba(0, 0, 0, .3)
+    @media screen and (max-width: $wM)
+      min-width: 300px
+      padding: 10px 20px
   &-checkbox
     display: flex
     align-items: center
     margin-bottom: 20px
+    @media screen and (max-width: $wM)
+      margin-bottom: 10px
     &:last-child
       margin-bottom: 0
     &:hover
       .gr-checkbox__box
         background-color: rgba($cBgMiddle, .2)
+      @media screen and (max-width: $wL)
+        .gr-checkbox__box
+          background-color: transparent
     &__box
       position: relative
       width: 30px
@@ -81,16 +89,26 @@ export default {
       border: 2px solid $cBgDark
       margin-right: 20px
       transition: .2s
+      @media screen and (max-width: $wM)
+        width: 25px
+        height: 25px
+        margin-right 15px
     &__tick
       position: absolute
       top: -5%
       left: 10%
       width: 30px
       height: 15px
-      border-bottom: 2px solid $cActive
-      border-left: 2px solid $cActive
+      border-bottom: 3px solid $cActive
+      border-left: 3px solid $cActive
       transform: rotate(-45deg)
+      @media screen and (max-width: $wM)
+        top: 5%
+        width: 25px
+        height: 10px
     &__value
       font-family: $font
       font-size: 20px
+      @media screen and (max-width: $wM)
+        font-size: 18px
 </style>

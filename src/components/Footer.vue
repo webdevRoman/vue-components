@@ -16,7 +16,7 @@ export default {
   padding 60px
   background-color $cBgMiddle
   text-align center
-  @media screen and (max-width: $wXL)
+  @media screen and (max-width: $wL)
     padding 40px
   &__title
     position relative
@@ -34,7 +34,7 @@ export default {
       background-color $cActive
       z-index -1
       transition 0.2s
-      @media screen and (max-width: $wXL)
+      @media screen and (max-width: $wL)
         top -8px
         left -10%
         width 120%
@@ -43,10 +43,10 @@ export default {
         height 40px
     &:hover
       color $cBgDark
-      @media screen and (max-width: $wXL)
+      @media screen and (max-width: $wL)
         color $cFontLight
       &:before
         width 104%
-        @media screen and (max-width: $wXL)
+        @media screen and (max-width: $wL)
           width 120%
 </style>

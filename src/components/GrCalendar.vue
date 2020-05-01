@@ -186,8 +186,16 @@ export default {
       margin: 0 auto
       cursor: pointer
       transition: .2s
+      @media screen and (max-width: $wL)
+        width 120px
+        font-size 20px
+      @media screen and (max-width: $wS)
+        width 100px
+        font-size 18px
       &:hover
         border-bottom: 2px solid $cActive
+        @media screen and (max-width: $wL)
+          border-bottom: 2px solid $cBgDark
     &__popup
       position: absolute
       top: 150%
@@ -214,6 +222,9 @@ export default {
         height: 40px
         border-radius: 50%
         transition: .2s
+        @media screen and (max-width: $wL)
+          width 30px
+          height 30px
         &:after
           position: absolute
           top: 50%
@@ -232,10 +243,18 @@ export default {
             transform: translateX(-70%) translateY(-50%) rotate(135deg)
         &:hover
           background-color: rgba($cBgDark, .2)
+          @media screen and (max-width: $wL)
+            background-color: transparent
       &__value
         font-size: 24px
+        @media screen and (max-width: $wL)
+          font-size 20px
+        @media screen and (max-width: $wS)
+          font-size 18px
     &__header
       margin-bottom: 15px
+      @media screen and (max-width: $wL)
+        margin-bottom 5px
     &__weekday
       &_disabled
         opacity: .5
@@ -258,8 +277,13 @@ export default {
         height: 30px
         font-family: $font
         transition: .2s
+        @media screen and (max-width: $wL)
+          width: 40px
+          height: 25px
         &:hover
           background-color: rgba($cActive, .4)
+          @media screen and (max-width: $wL)
+            background-color: transparent
         &[disabled]
           cursor: default
           opacity: .5
@@ -267,6 +291,9 @@ export default {
             background-color: transparent
         &_today
           background-color: rgba($cActive, .2)
+          &:hover
+            @media screen and (max-width: $wL)
+              background-color: rgba($cActive, .2)
         &_chosen
           background-color: $cActive
           color: $cBgLight

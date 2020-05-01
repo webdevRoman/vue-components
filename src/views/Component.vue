@@ -45,7 +45,7 @@
               .gr-slider-item__title Кот
       GrCheckboxes(v-if="$route.query.engName === 'checkboxes'", :gr-checkboxes-config="checkboxesConfig", v-model="chosenCheckboxes")
       GrRadiobuttons(v-if="$route.query.engName === 'radiobuttons'", :gr-radiobuttons-config="radiobuttonsConfig", v-model="chosenRadiobutton")
-      GrMenu(v-if="$route.query.engName === 'menu'", :gr-menu-config="menuConfig")
+      GrMenu#gr-menu(v-if="$route.query.engName === 'menu'", :gr-menu-config="menuConfig")
       .gr-modals(v-if="$route.query.engName === 'modal'")
         GrModal#modal-alert(:gr-modal-config="modalAlertConfig")
         GrModal#modal-confirm(:gr-modal-config="modalConfirmConfig", v-model="modalConfirmed")
@@ -365,6 +365,10 @@ export default {
   background-repeat: no-repeat
   background-size: cover
   text-align: center
+  @media screen and (max-width: $wL)
+    height: 200px
+  @media screen and (max-width: $wS)
+    height: 120px
   &-1
     background-image: url('../assets/img/bg1b.jpg')
   &-2
@@ -381,11 +385,22 @@ export default {
     font-size: 64px
     text-transform: uppercase
     margin-bottom: 20px
+    @media screen and (max-width: $wL)
+      width: 500px
+      font-size 36px
+    @media screen and (max-width: $wS)
+      width: 280px
+      font-size 24px
+      margin-bottom 10px
   &__subtitle
     font-size: 24px
     letter-spacing: .25em
     text-transform: uppercase
     color: $cFontLight
+    @media screen and (max-width: $wL)
+      font-size 16px
+    @media screen and (max-width: $wL)
+      font-size 14px
   &__text
     position: relative
     z-index: 10
@@ -401,12 +416,26 @@ export default {
       height: 40px
       background-color: $cActive
       z-index: -1
+      @media screen and (max-width: $wL)
+        bottom: -5px
+        width: 550px
+        height: 30px
+      @media screen and (max-width: $wS)
+        width: 300px
+        height: 25px
     &:after
       bottom: -35px
       left: -15px
       width: 20px
       height: 200px
       background-color: $cBgDark
+      @media screen and (max-width: $wL)
+        bottom: -20px
+        left: 0
+        width: 10px
+        height: 150px
+      @media screen and (max-width: $wS)
+        height: 100px
 
 .component
   display: flex
@@ -446,6 +475,18 @@ export default {
         text-align: center
         text-transform: uppercase
         box-shadow: -5px -5px 20px rgba(0, 0, 0, .5)
+        @media screen and (max-width: $wL)
+          right: -40px
+          padding: 10px 35px
+          font-size: 20px
+        @media screen and (max-width: $wM)
+          right: -20px
+          padding: 5px 20px
+          font-size: 18px
+        @media screen and (max-width: $wS)
+          right: -5px
+          padding: 5px 10px
+          font-size: 14px
   &-modals
     display flex
     justify-content center
@@ -517,8 +558,4 @@ export default {
         margin-bottom 15px
         &:last-child
           margin-bottom 0
-.gr-slider-arrow
-  width 100px
-  height 100px
-  background-color red
 </style>

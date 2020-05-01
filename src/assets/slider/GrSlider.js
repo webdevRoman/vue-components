@@ -4,6 +4,7 @@ export class GrSlider {
     this.wrapper = document.getElementById('gr-slider-wrapper')
     this.container = document.getElementById('gr-slider-container')
     this.items = document.querySelectorAll('.gr-slider-item')
+    this.items.forEach(item => { item.style.minWidth = this.wrapper.offsetWidth + 'px' })
     this.itemsNumber = this.items.length
     const cloneFirst = this.items[0].cloneNode(true)
     const cloneLast = this.items[this.itemsNumber - 1].cloneNode(true)

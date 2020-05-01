@@ -3,10 +3,12 @@
 .gr
   &-slider
     &-wrapper
-      position relative
-      height 500px
-      width 1200px
-      overflow hidden
+      position: relative
+      height 35vw
+      width: 95%
+      overflow: hidden
+      @media screen and (max-width: $wS)
+        height: 150px
       &:before, &:after
         position: absolute
         top: 0
@@ -17,68 +19,82 @@
         background-color: $cBgLight
         box-shadow: 0 0 40px 60px $cBgLight
         z-index: 5
+        @media screen and (max-width: $wS)
+          width: 5px
+          box-shadow: 0 0 20px 30px $cBgLight
       &:before
         left: 0
       &:after
         right: 0
     &-container
       position: absolute
-      top 0
-      left -1200px
-      height 100%
-      display flex
+      top: 0
+      height: 100%
+      display: flex
       white-space: nowrap
     &-item
-      min-width 1200px
       height: 100%
     &-arrow
-      position absolute
-      top 50%
+      position: absolute
+      top: 50%
       transform: translateY(-50%)
-      display flex
-      justify-content center
-      align-items center
-      width 60px
-      height 60px
-      border-radius 50%
-      transition 0.2s
-      cursor pointer
-      z-index 10
+      display: flex
+      justify-content: center
+      align-items: center
+      width: 60px
+      height: 60px
+      border-radius: 50%
+      transition: .2s
+      cursor: pointer
+      z-index: 10
+      @media screen and (max-width: $wM)
+        width: 45px
+        height: 45px
       &:hover
         background-color: rgba($cBgDark, .2)
+        @media screen and (max-width: $wL)
+          background-color: transparent
       &:after
         position: absolute
         top: 50%
         left: 50%
         content: ''
-        display block
-        width 50%
-        height 50%
+        display: block
+        width: 50%
+        height: 50%
         border-top: 2px solid $cBgDark
         border-right: 2px solid $cBgDark
       &_left
-        left 0
+        left: 0
         &:after
           transform: translate(-30%, -50%) rotate(-135deg)
       &_right
-        right 0
+        right: 0
         &:after
           transform: translate(-70%, -50%) rotate(45deg)
     &-nav
-      position absolute
-      // top 105%
-      bottom 0
-      left 50%
+      position: absolute
+      bottom: 0
+      left: 50%
       transform: translateX(-50%)
+      display: flex
+      justify-content: center
+      align-items: center
+      flex-wrap: wrap
+      width 100%
       &__item
-        width 15px
-        height 15px
-        background-color $cBgDark
-        margin 0 10px
-        transition 0.2s
+        width: 15px
+        height: 15px
+        background-color: $cBgDark
+        margin: 0 10px 5px
+        transition: .2s
+        @media screen and (max-width: $wS)
+          margin: 0 5px 5px
         &:hover
           background-color: $cBgMiddle
+          @media screen and (max-width: $wL)
+            background-color: $cBgDark
         &_active
-          background-color $cActive
+          background-color: $cActive
           &:hover
             background-color: $cActive

@@ -66,6 +66,9 @@ export default {
       &:hover
         width 220px
         color $cActive
+        @media screen and (max-width: $wL)
+          width 200px
+          color $cFontLight
     &-overlay
       position: fixed
       top: 0
@@ -82,9 +85,14 @@ export default {
     &-window
       position relative
       max-width: 80%
-      max-height: 90%
       padding 30px 60px
       background-color: $cBgLight
+      @media screen and (max-width: $wL)
+        max-width: 90%
+        padding 25px 50px
+      @media screen and (max-width: $wS)
+        max-width: 95%
+        padding 10px 15px
       &__close
         position absolute
         top -40px
@@ -92,16 +100,33 @@ export default {
         font-size 36px
         color $cFontLight
         transition 0.2s
+        @media screen and (max-width: $wL)
+          top -50px
+          right 0
+        @media screen and (max-width: $wS)
+          top -35px
+          font-size 28px
         &:hover
           transform rotate(90deg)
+          @media screen and (max-width: $wL)
+            transform none
       &__title
         font-size 24px
         font-weight bold
         text-transform uppercase
         margin-bottom 30px
+        @media screen and (max-width: $wL)
+          margin-bottom 15px
+        @media screen and (max-width: $wS)
+          font-size 18px
+          margin-bottom 10px
       &__text
         font-size: 18px
         line-height: 1.5
+        @media screen and (max-width: $wL)
+          font-size 16px
+        @media screen and (max-width: $wS)
+          font-size 14px
       &__input
         display: block
         width: 420px
@@ -111,13 +136,21 @@ export default {
         text-align: center
         margin: 30px auto 0 auto
         transition: .2s
+        @media screen and (max-width: $wS)
+          width 100%
+          font-size 18px
+          margin-top 15px
         &:hover, &:focus
           border-bottom: 2px solid $cActive
+          @media screen and (max-width: $wL)
+            border-bottom: 2px solid $cBgDark
       &__confirmation
         display flex
         justify-content center
         align-items center
         margin-top 30px
+        @media screen and (max-width: $wS)
+          margin-top 15px
       &__btn
         width 200px
         padding 10px
@@ -127,12 +160,21 @@ export default {
         color $cFontLight
         text-transform uppercase
         transition 0.2s
+        @media screen and (max-width: $wS)
+          width 130px
+          padding 5px
         &--close
           background-color $cWarning
         &--confirm
           background-color $cActive
         &:first-child
           margin-right 20px
+          @media screen and (max-width: $wS)
+            margin-right 10px
         &:hover
           width 220px
+          @media screen and (max-width: $wL)
+            width 200px
+          @media screen and (max-width: $wS)
+            width 130px
 </style>
