@@ -171,6 +171,8 @@ export default {
     &__container
       position relative
       width 300px
+      @media screen and (max-width: $wS)
+        width 200px
     &__input
       position relative
       display: block
@@ -183,6 +185,9 @@ export default {
       transition: .2s
       cursor pointer
       transition 0.2s
+      @media screen and (max-width: $wS)
+        padding 2px 20px 2px 5px
+        font-size 16px
       &:after
         position absolute
         top 50%
@@ -195,10 +200,18 @@ export default {
         border-bottom 2px solid $cBgDark
         border-right 2px solid $cBgDark
         transition 0.2s
+        @media screen and (max-width: $wS)
+          right 5px
+          width 7px
+          height 7px
       &:hover
         &:after
           border-bottom 2px solid $cActive
           border-right 2px solid $cActive
+        @media screen and (max-width: $wL)
+          &:after
+            border-bottom 2px solid $cBgDark
+            border-right 2px solid $cBgDark
       &_active
         &:after
           transform translateY(-30%) rotateZ(225deg)
@@ -243,6 +256,8 @@ export default {
       transition 0.2s
       &:hover
         background-color rgba($cBgMiddle, 0.2)
+        @media screen and (max-width: $wL)
+          background-color transparent
       &_active
         background-color rgba($cActive, 0.5)
         &:hover
@@ -262,11 +277,16 @@ export default {
       transition 0.2s
       &:hover
         background-color rgba($cBgMiddle, 0.2)
+        @media screen and (max-width: $wL)
+          background-color transparent
       &[disabled]
+        opacity 0.5
         &:hover
           background-color transparent
           cursor default
     &__quantity
       font-family $font
       margin 0 10px
+      @media screen and (max-width: $wS)
+        margin 0 5px
 </style>

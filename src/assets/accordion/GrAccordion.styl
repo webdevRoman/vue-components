@@ -11,23 +11,29 @@
       &__title
         width 100%
         padding 10px 20px
-        // border-bottom: 2px solid $cBgDark
         font-size 22px
         font-weight bold
         text-transform uppercase
         text-align-last left
         transition 0.2s
+        @media screen and (max-width: $wM)
+          padding 5px 10px
+          font-size 18px
         &:hover
           background-color: rgba($cBgMiddle, .2)
+          @media screen and (max-width: $wL)
+            background-color transparent
       &__wrapper
         overflow hidden
       &__content
         padding 10px 20px
         border-top: 2px solid $cBgDark
-        // transform-origin: center top
-        // transform scaleY(0)
         margin-top -100%
         transition 0.2s
+        @media screen and (max-width: $wM)
+          padding 5px 10px
+          margin-top -110%
+        @media screen and (max-width: $wM)
+          margin-top: -500%
         &_active
-          // transform: scaleY(1)
           margin-top 0

@@ -24,6 +24,12 @@
         &:hover
           width: 100%
           color: $cActive
+          @media screen and (max-width: $wL)
+            width 95%
+            color $cFontLight
+            &.gr-tabs-nav__item_active:hover
+              width: 100%
+              color: $cActive
     &-content
       flex-basis: 70%
       line-height: 1.5
@@ -41,12 +47,20 @@
             align-items center
             flex-wrap: wrap
             margin-bottom 50px
+            @media screen and (max-width: $wM)
+              margin-bottom 25px
             &__item
               width auto
               padding 10px 20px
               border: none
               border-left: 1px solid $cActive
               border-right: 1px solid $cActive
+              text-align center
+              @media screen and (max-width: $wM)
+                flex-grow: 1
+                padding 5px 10px
+                border: 1px solid $cActive
+                font-size 14px
               &_active
                 width: auto
               &:hover

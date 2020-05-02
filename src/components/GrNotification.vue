@@ -44,6 +44,10 @@ export default {
     color $cFontLight
     transition 0.2s
     z-index 10
+    @media screen and (max-width: $wL)
+      bottom 10px
+      right 10px
+      width 300px
     &__close
       position absolute
       top -40px
@@ -51,13 +55,20 @@ export default {
       font-size 36px
       color $cBgDark
       transition 0.2s
+      @media screen and (max-width: $wL)
+        top -35px
+        font-size 28px
       &:hover
         transform rotate(90deg)
+        @media screen and (max-width: $wL)
+          transform none
     &__header
       display flex
       justify-content space-between
       align-items center
       margin-bottom 15px
+      @media screen and (max-width: $wL)
+        margin-bottom 10px
     &__icon
       flex-shrink 0
       width 20px
@@ -69,4 +80,6 @@ export default {
     &__message
       font-size 14px
       line-height 1.5
+      @media screen and (max-width: $wM)
+        font-size 12px
 </style>

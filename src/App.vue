@@ -15,6 +15,11 @@
         margin-bottom 0
   &-select
     margin-right 20px
+    @media screen and (max-width: $wL)
+      margin-right 0
+      margin-bottom 20px
     &:last-child
       margin-right 0
+      @media screen and (max-width: $wL)
+        margin-bottom 0
 </style>

@@ -368,7 +368,7 @@ export default {
   @media screen and (max-width: $wL)
     height: 200px
   @media screen and (max-width: $wS)
-    height: 120px
+    height: 130px
   &-1
     background-image: url('../assets/img/bg1b.jpg')
   &-2
@@ -379,17 +379,22 @@ export default {
     background-image: url('../assets/img/bg4b.jpg')
   &-5
     background-image: url('../assets/img/bg5b.jpg')
-  &__title
+  &__text
     width: 700px
+    @media screen and (max-width: $wL)
+      width: 500px
+    @media screen and (max-width: $wS)
+      width: 280px
+  &__title
+    width 90%
     font-weight: bold
     font-size: 64px
     text-transform: uppercase
     margin-bottom: 20px
+    z-index 2
     @media screen and (max-width: $wL)
-      width: 500px
       font-size 36px
     @media screen and (max-width: $wS)
-      width: 280px
       font-size 24px
       margin-bottom 10px
   &__subtitle
@@ -496,6 +501,8 @@ export default {
     display flex
     justify-content center
     align-items center
+    @media screen and (max-width: $wL)
+      flex-direction column
   &-tabs
     width 80%
     p
@@ -504,16 +511,28 @@ export default {
         margin-bottom 0
     iframe
       display block
+      max-width 100%
       margin 0 auto
+      @media screen and (max-width: $wM)
+        max-height 40vw
   &-accordion
     width 80%
+    @media screen and (max-width: $wL)
+      width 90%
+    @media screen and (max-width: $wM)
+      width 95%
     p
       margin-bottom 15px
+      @media screen and (max-width: $wM)
+        margin-bottom 10px
       &:last-child
         margin-bottom 0
     iframe
       display block
+      max-width 100%
       margin 0 auto
+      @media screen and (max-width: $wM)
+        max-height 40vw
   &-preloader
     &-button
       padding 10px 20px
@@ -526,6 +545,9 @@ export default {
       &:hover
         padding 10px 30px
         color $cActive
+        @media screen and (max-width: $wL)
+          padding 10px 20px
+          color $cFontLight
   &-notification
     &-wrapper
       display flex
@@ -542,17 +564,25 @@ export default {
       text-transform uppercase
       margin 0 auto 20px auto
       transition 0.2s
+      @media screen and (max-width: $wS)
+        width 90%
       &:last-child
         margin-bottom 0
       &:hover
         width 510px
         color $cActive
+        @media screen and (max-width: $wL)
+          width 490px
+          color $cFontLight
   &-drawer
     margin-bottom 20px
     &-wrapper
       width 80%
       padding 20px 30px
       box-shadow: 0 0 20px rgba(0, 0, 0, .3)
+      @media screen and (max-width: $wL)
+        width 100%
+        box-shadow none
       p
         line-height 1.5
         margin-bottom 15px

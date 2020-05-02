@@ -24,7 +24,6 @@ export class GrAccordion {
         this.contentItems[ind].classList.add('gr-accordion-item__content_active')
       } else {
         this.contentItems.forEach(item => item.classList.remove('gr-accordion-item__content_active'))
-        // this.contentItems[ind].classList.add('gr-accordion-item__content_active')
         setTimeout(() => { this.contentItems[ind].classList.add('gr-accordion-item__content_active') }, 200)
       }
     }

@@ -8,6 +8,8 @@ export class GrTabs {
       this.navItems[i].addEventListener('click', () => this.setActive(i))
     if (options.layout === 'vertical')
       tabsContainer.classList.add('gr-tabs_vertical')
+    if (window.innerWidth <= 768)
+      tabsContainer.classList.add('gr-tabs_vertical')
   }
   setActive(ind) {
     for (let i = 0; i < this.navItems.length; i++) {

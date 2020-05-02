@@ -67,6 +67,11 @@ export default {
           background-color $cActive
           &:before, &:after
             background-color $cActive
+        @media screen and (max-width: $wL)
+          .gr-drawer__arrow
+            background-color $cBgDark
+            &:before, &:after
+              background-color $cBgDark
     &__arrow
       width 26px
       height 3px
@@ -89,26 +94,36 @@ export default {
     &__menu
       position absolute
       top 150%
-      right -100%
+      right -115%
       width 400px
       background-color $cBgLight
       box-shadow: 0 0 20px rgba(0, 0, 0, .3)
-      margin-right -100px
+      margin-right -50px
       transition 0.2s
+      @media screen and (max-width: $wM)
+        width 300px
       &_active
         right 0
     &__title
       padding 20px 120px 30px 20px
       font-size 22px
       font-weight bold
+      @media screen and (max-width: $wM)
+        padding 20px 65px 20px 15px
+        font-size 18px
     &__item
       display block
       padding 15px 120px 15px 20px
       font-size 18px
       text-transform uppercase
       transition 0.2s
+      @media screen and (max-width: $wM)
+        padding 10px 65px 10px 15px
+        font-size 16px
       &:hover
         background-color rgba($cBgDark, 0.2)
+        @media screen and (max-width: $wL)
+          background-color transparent
     .router
       &-link
         &-exact
