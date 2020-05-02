@@ -72,7 +72,7 @@ export default {
     }
   },
   mounted() {
-    if (screen.width > 992) {
+    if (window.innerWidth > 992) {
       const cards = document.querySelectorAll('.card')
       cards.forEach(card => {
         card.addEventListener('mouseenter', setTransition)
