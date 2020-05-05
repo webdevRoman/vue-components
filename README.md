@@ -2,14 +2,33 @@
 
 Для использования какого-либо компонента необходимо скачать этот компонент из данного репозитория и подключить его в вашем проекте.
 
-В этом пакете есть как компоненты Vue, так и компоненты, для которых необходимо создать разметку самостоятельно и подключить js и css файлы. Далее в описании каждого компонента будет пометка, какого типа этот компонент (Vue или CSS + JS).
-
-При подключении компонентов Vue из данного пакета необходимо обязательно для них задавать уникальный id!
+В этом пакете есть как компоненты Vue, так и компоненты, для которых необходимо создать разметку самостоятельно и подключить JS и CSS файлы. Далее в описании каждого компонента будет пометка, какого типа этот компонент (Vue или CSS + JS).
 
 ---
 
 
-## Инструкция подключения компонента Vue
+## Навигация
+
+[Инструкция подключения компонента Vue](#instruction_vue)<br>
+[Инструкция подключения компонента CSS + JS](#instruction_css_js)<br>
+[Пример подключения компонентов](#example)<br>
+[GrCalendar (Vue)](#gr_calendar)<br>
+[GrCheckboxes (Vue)](#gr_checkboxes)<br>
+[GrRadiobuttons (Vue)](#gr_radiobuttons)<br>
+[GrMenu (Vue)](#gr_menu)<br>
+[GrModal (Vue)](#gr_modal)<br>
+[GrSelect (Vue)](#gr_select)<br>
+[GrNotification (Vue)](#gr_notification)<br>
+[GrDrawer (Vue)](#gr_drawer)<br>
+[GrSlider (CSS + JS)](#gr_slider)<br>
+[GrTabs (CSS + JS)](#gr_tabs)<br>
+[GrAccordion (CSS + JS)](#gr_accordion)<br>
+[GrPreloader (CSS + JS)](#gr_preloader)
+
+---
+
+
+## <a name="instruction_vue">Инструкция подключения компонента Vue</a>
 
 1. Импортировать компонент (в script):<br>
 `import GrCheckboxes from '@/components/GrCheckboxes.vue'`
@@ -24,18 +43,19 @@ checkboxesConfig: {
 Этот объект нужно передать в props компонента при подключении.<br>
 Имя props и параметры объекта конфигурации указаны в описании каждого компонента.
 
-3. Если необходимо, создать поле для данных, которые будут выбраны в компоненте (в script > data):<br>
+3. Если необходимо, создать поле для данных (в script > data), которые будут выбраны в компоненте:<br>
 `chosenCheckboxes: []`
 
 4. Подключить компонент (в template):<br>
-`<gr-checkboxes id="gr-checkboxes" :gr-checkboxes-config="checkboxesConfig" v-model="chosenCheckboxes"></gr-checkboxes>`
+`<gr-checkboxes id="gr-checkboxes" :gr-checkboxes-config="checkboxesConfig" v-model="chosenCheckboxes"></gr-checkboxes>`<br>
+Обязательно задать уникальный id!
 
 5. При необходимости изменить стили (либо в самом компоненте, либо в любом компоненте, где в style не указан параметр scoped).
 
 ---
 
 
-## Инструкция подключения компонента CSS + JS
+## <a name="instruction_css_js">Инструкция подключения компонента CSS + JS</a>
 
 1. Импортировать файлы (в script):
 ```
@@ -52,14 +72,14 @@ const grSlider = new GrSlider({
 ```
 Параметры объекта конфигурации указаны в описании каждого компонента.
 
-3. Создать разметку (в template). Примеры разметки для каждого компонента CSS + JS будут приведены в их описании. Структуру разметки, все классы и идентификаторы нужно сохранить, как в примере!
+3. Создать разметку (в template). Примеры разметки для каждого компонента будут приведены в их описании. Структуру разметки, все классы и идентификаторы нужно сохранить, как в примере!
 
 4. При необходимости изменить стили.
 
 ---
 
 
-## Пример подключения компонентов
+## <a name="example">Пример подключения компонентов</a>
 
 ```
 <template lang="pug">
@@ -112,7 +132,7 @@ export default {
 ---
 
 
-## GrCalendar (Vue)
+## <a name="gr_calendar">GrCalendar (Vue)</a>
 
 Props конфигурации компонента - `gr-calendar-config`.
 
@@ -133,7 +153,7 @@ Props конфигурации компонента - `gr-calendar-config`.
 ---
 
 
-## GrCheckboxes (Vue)
+## <a name="gr_checkboxes">GrCheckboxes (Vue)</a>
 
 Props конфигурации компонента - `gr-checkboxes-config`.
 
@@ -141,6 +161,7 @@ Props конфигурации компонента - `gr-checkboxes-config`.
 | -----    | ---------- | ---------------     | --------------------  |
 | `values` * | Значения для чекбоксов | Массив из строчных элементов | - |
 | `keys` | Ключи значений | Массив | - |
+
 \* - обязательное поле
 
 Кроме объекта конфигурации необходимо создать объект для получения отмеченных чекбоксов и передать его в `v-model`.
@@ -153,7 +174,7 @@ Props конфигурации компонента - `gr-checkboxes-config`.
 ---
 
 
-## GrRadiobuttons (Vue)
+## <a name="gr_radiobuttons">GrRadiobuttons (Vue)</a>
 
 Все настройки точно такие же, как и в `GrCheckboxes`.
 
@@ -162,7 +183,7 @@ Props конфигурации компонента - `gr-radiobuttons-config`.
 ---
 
 
-## GrMenu (Vue)
+## <a name="gr_menu">GrMenu (Vue)</a>
 
 Props конфигурации компонента - `gr-menu-config`.
 
@@ -190,7 +211,7 @@ Props конфигурации компонента - `gr-menu-config`.
 ---
 
 
-## GrModal (Vue)
+## <a name="gr_modal">GrModal (Vue)</a>
 
 Props конфигурации компонента - `gr-modal-config`.
 
@@ -210,7 +231,7 @@ Props конфигурации компонента - `gr-modal-config`.
 ---
 
 
-## GrSelect (Vue)
+## <a name="gr_select">GrSelect (Vue)</a>
 
 Props конфигурации компонента - `gr-select-config`.
 
@@ -221,6 +242,7 @@ Props конфигурации компонента - `gr-select-config`.
 | `isMultiple` | Разрешено ли выбрать несколько элементов | true, false | false |
 | `itemsMultiple` | Разрешено ли выбрать элемент несколько раз | true, false | false |
 | `maxItemQuantity` | Максимальное количество для выбора одного элемента (работает только при `itemsMultiple: true`) | Целое число | - |
+
 \* - обязательное поле
 
 Кроме объекта конфигурации необходимо создать объект для получения выбранных элементов и передать его в `v-model`.
@@ -233,7 +255,7 @@ Props конфигурации компонента - `gr-select-config`.
 ---
 
 
-## GrNotification (Vue)
+## <a name="gr_notification">GrNotification (Vue)</a>
 
 Props конфигурации компонента - `gr-notification-config`.
 
@@ -242,10 +264,11 @@ Props конфигурации компонента - `gr-notification-config`.
 | `type` * | Тип уведомления | 'info', 'success', 'error' | - |
 | `title` * | Заголовок уведомления | Строка | - |
 | `message` | Сообщение уведомления | Строка | - |
+
 \* - обязательное поле
 
 Для показа уведомления необходимо изменить стили этого компонента:
-- display = block
+- display = 'block'
 - opacity = 1
 
 Пример подключения компонента:<br>
@@ -254,7 +277,7 @@ Props конфигурации компонента - `gr-notification-config`.
 ---
 
 
-## GrDrawer (Vue)
+## <a name="gr_drawer">GrDrawer (Vue)</a>
 
 Props конфигурации компонента - `gr-drawer-config`.
 
@@ -271,7 +294,7 @@ Props конфигурации компонента - `gr-drawer-config`.
 ---
 
 
-## GrSlider (CSS + JS)
+## <a name="gr_slider">GrSlider (CSS + JS)</a>
 
 | Параметр | Описание   | Допустимые значения | Значение по умолчанию |
 | -----    | ---------- | ---------------     | --------------------  |
@@ -295,7 +318,7 @@ Props конфигурации компонента - `gr-drawer-config`.
 ---
 
 
-## GrTabs (CSS + JS)
+## <a name="gr_tabs">GrTabs (CSS + JS)</a>
 
 | Параметр | Описание   | Допустимые значения | Значение по умолчанию |
 | -----    | ---------- | ---------------     | --------------------  |
@@ -323,7 +346,7 @@ Props конфигурации компонента - `gr-drawer-config`.
 ---
 
 
-## GrAccordion (CSS + JS)
+## <a name="gr_accordion">GrAccordion (CSS + JS)</a>
 
 | Параметр | Описание   | Допустимые значения | Значение по умолчанию |
 | -----    | ---------- | ---------------     | --------------------  |
@@ -357,7 +380,7 @@ Props конфигурации компонента - `gr-drawer-config`.
 ---
 
 
-## GrPreloader (CSS + JS)
+## <a name="gr_preloader">GrPreloader (CSS + JS)</a>
 
 При создании объекта класса компонента в конструктор ничего передавать не нужно.
 
