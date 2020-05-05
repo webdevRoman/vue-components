@@ -128,10 +128,16 @@ export default {
     // Config
     if (this.grCalendarConfig.monthsDictionary && this.grCalendarConfig.monthsDictionary.length === 12)
       this.monthsDictionary = this.grCalendarConfig.monthsDictionary
+    else
+      this.monthsDictionary = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь']
     if (this.grCalendarConfig.weekdaysDictionary && this.grCalendarConfig.weekdaysDictionary.length === 7)
       this.weekdaysDictionary = this.grCalendarConfig.weekdaysDictionary
+    else
+      this.weekdaysDictionary = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
     if (this.grCalendarConfig.separator && this.grCalendarConfig.separator.length !== 0)
       this.separator = this.grCalendarConfig.separator
+    else
+      this.separator = '.'
     if (this.grCalendarConfig.disabledWeekdays && this.grCalendarConfig.disabledWeekdays.length > 0 && this.grCalendarConfig.disabledWeekdays.length <= 7)
       this.grCalendarConfig.disabledWeekdays.forEach(day => {
         const ind = this.weekdaysDictionary.findIndex(curDay => curDay === day)

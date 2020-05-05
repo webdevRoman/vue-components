@@ -168,11 +168,6 @@ export default {
         disabledDaysAfter: '15/05/2020'
       },
       calendarDate: '',
-      sliderConfig: {
-        containerId: 'slider-container',
-        arrows: true,
-        navButtons: true
-      },
       checkboxesConfig: {
         values: ['Чекбокс 1', 'Чекбокс 2', 'Чекбокс 3'],
         keys: ['chb1', 'chb2', 'chb3']
